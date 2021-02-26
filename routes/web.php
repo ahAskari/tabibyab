@@ -1,7 +1,12 @@
 <?php
 
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ArticleController;  
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/article','\App\Http\Controllers\ArticleController@showArticle');
+Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/article', [ArticleController::class, 'showArticle'])->name('showArticle');

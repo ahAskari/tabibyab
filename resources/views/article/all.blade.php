@@ -8,7 +8,7 @@
             <p>مطالب پیشنهادی</p>
         </div>
         <div class="card-group">
-            <div class="card ">
+            <div class="card rounded">
                 <img class="card-img-top" src="{{asset('/images/article/1.jpg')}}" alt="Card image cap">
                 <div class="card-body ">
                     <h5 class="card-title shadow-lg">بیسبیس</h5>
@@ -44,7 +44,7 @@
     </section>
     {{-- article-list --}}
     <section class="article-list">
-        <div class="article-item d-flex col p-4">
+        <div class="article-item d-flex col p-4 rounded">
             
             <div class="article-content pt-4">
                 <!-- <p class=""></p> -->
