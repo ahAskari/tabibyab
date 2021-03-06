@@ -17,8 +17,8 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
-            $table->binary('photo');
-            $table->integer('vote');
+            $table->string('photo');
+            $table->integer('vote')->nullable();
             $table->timestamps();
         });
     }

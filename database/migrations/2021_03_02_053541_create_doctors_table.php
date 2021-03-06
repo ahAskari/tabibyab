@@ -16,15 +16,15 @@ class CreateDoctorsTable extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->binary('profile_img');
-            $table->string('gender');
+            $table->string('profile_img');
+            $table->string('gender')->nullable();
             $table->string('tell_nu');
-            $table->string('specility_id');
+            $table->integer('speciality_id');
             $table->string('address');
             $table->string('date_time_id');
             $table->timestamps();
             
-            $table->foreign('specility_id')->references('id')->on('specialities')->onDelete('cascade');
+            // $table->foreign('speciality_id')->references('id')->on('specialities')->onDelete('cascade');
         });
     }
 

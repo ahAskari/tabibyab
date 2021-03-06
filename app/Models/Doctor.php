@@ -8,5 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','profile_img','gender','tell_nu','address'];
+    protected $fillable = [
+        'name',
+        'profile_img',
+        'gender',
+        'tell_nu',
+        'address'
+    ];
+
+    public function speciality(){
+        return $this->belongsTo(Speciality::class);
+    }
 }

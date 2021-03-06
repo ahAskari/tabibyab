@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ArticleController;  
+use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\DoctorsListController;
 
 /*
@@ -21,7 +23,15 @@ use App\Http\Controllers\DoctorsListController;
 */
 
 Auth::routes();
-Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('/', [DoctorController::class, 'all'])->name('all');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/article', [ArticleController::class, 'showArticle'])->name('showArticle');
-Route::get('/drlist',[DoctorsListController::class, 'all'])->name('all');
+Route::get('/doctors',[DoctorController::class, 'doctorList'])->name('doctorList');
+Route::get('/doctors/{id}/profile', [DoctorController::class, 'doctorProfile'])->name( 'doctorProfile');
+Route::get('/drlist', [DoctorController::class, 'dateTime'])->name('dateTime');
+
+// ==============================insert_image fetch_image
+// Route::get('store_image', [DoctorsListController::class, 'all']);
+// Route::post('store_image/insert_image', [DoctorsListController::class, 'insert_image']);
+// Route::get('store_image/fetch_image/{id}', [DoctorsListController::class, 'fetch_image']);
+// ==============================

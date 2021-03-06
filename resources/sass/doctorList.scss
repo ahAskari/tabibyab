@@ -1,0 +1,161 @@
+.infoBox {
+  .flip-card {
+    background-color: transparent;
+    width: 125px;
+    height: 125px;
+    perspective: 1000px;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+  }
+
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 50%;
+  }
+
+  .flip-card-front {
+    background-color: rgb(187, 187, 187);
+    color: black;
+    border-radius: 50%;
+    .imgAvatar {
+      border-radius: 50%;
+      width: 125px;
+      height: 125px;
+      padding: 0;
+    }
+  }
+
+  .flip-card-back {
+    color: white;
+    transform: rotateY(180deg);
+    .nameAvatar {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  .title {
+    font-weight: 700;
+  }
+  .name {
+    font-weight: 500;
+    font-size: 22px;
+  }
+  a.takeTurn {
+    font-weight: 500;
+    font-size: 20px;
+    border-radius: 9px;
+    border: none;
+  }
+  .profileLink {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .address {
+    font-weight: 700;
+  }
+  .locationIcon {
+    width: 18px;
+    height: 22px;
+  }
+  .titleCard {
+    background: linear-gradient(
+      90deg,
+      rgba(234, 255, 252, 1) 15%,
+      rgba(231, 255, 255, 1) 98%
+    );
+    text-align: center;
+    color: black;
+    font-size: 18px;
+    font-weight: 900;
+  }
+}
+//footer
+
+//=====================================================
+// responsive
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 576px) {
+  .infoBox {
+    .name {
+      font-size: 20px !important;
+      text-align: right !important;
+      margin-left: auto !important;
+    }
+    .address {
+      font-size: 13px;
+    }
+    a.takeTurn {
+      padding: 0 10px !important;
+      font-size: 16px !important;
+    }
+    &_content {
+      margin-right: 0px !important;
+    }
+    .titleCard {
+      display: none;
+    }
+    .flip-card {
+      width: 90px;
+      height: 90px;
+    }
+    .imgAvatar {
+      width: 100px !important;
+      height: 100px !important;
+    }
+  }
+}
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+  .infoBox {
+    .name {
+      font-size: 20px !important;
+      text-align: right !important;
+      margin-left: auto !important;
+    }
+    .address {
+      font-size: 13px;
+    }
+    a.takeTurn {
+      padding: 0 10px !important;
+      font-size: 16px !important;
+    }
+    &_content {
+      margin-right: 0px !important;
+    }
+    .titleCard {
+      display: none;
+    }
+    .flip-card {
+      width: 110px;
+      height: 110px;
+    }
+    .imgAvatar {
+      width: 110px !important;
+      height: 110px !important;
+    }
+  }
+}
+// // Medium devices (tablets, less than 992px)
+// @media (max-width: 991.98px) { ... }

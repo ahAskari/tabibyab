@@ -31,18 +31,20 @@
         <div class="searchDoctor shadow-lg col-12">
             <label for="specialyList" class="text-right">جستجوی پزشکان</label>
             <div class="d-flex justify-content-between">
-                <form action="{{ route('all') }}" method="get" enctype="" class="d-flex align-items-center">
-                    @csrf
-                    <input type="submit" class="btn btn-info" value="جستجو">
+                {{-- @foreach ($title as $item) --}}
+                <form action="{{ route('doctorList') }}" method="get" class="d-flex align-items-center">
+                    
+                    <input type="submit" class="btn btn-info" value="جستجو"> 
                     <div class="specialyList shadow-lg  ml-2 text-center" id="specialyList">
-                        <select class="" required dir="rtl">
+                        <select name="specialyList" class=""  id="" required dir="rtl">
                             <option value="" selected disabled>تخصص مورد نظر خود را انتخاب کنید</option>
                             @foreach ($title as $item)
-                            <option value="">{{ $item->title }}</option>
+                            <option value="{{$item->id}}">{{ $item->title }}</option>
                             @endforeach
                         </select>
                     </div>
                 </form>
+                {{-- @endforeach --}}
             </div>
         </div>
     </section>
