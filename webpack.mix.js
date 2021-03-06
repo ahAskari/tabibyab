@@ -15,5 +15,6 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/article-list.scss', 'public/css/article')
     .sass('resources/sass/doctorList.scss', 'public/css/doctor')
+    .sass('resources/sass/doctorProfile.scss', 'public/css/doctor')
     .sass('resources/sass/index.scss', 'public/css')
     .sourceMaps();

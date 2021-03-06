@@ -14,7 +14,6 @@ class DoctorController extends Controller
         $title = Speciality::all();
         return view('index', ['title' => $title]);
     }
-
     // show doctor lists
     public function doctorList(Request $request)
     {
@@ -23,44 +22,16 @@ class DoctorController extends Controller
         $speciality = Speciality::where('id', $id)->first();
         return view('doctor.list', ['doctors' => $doctors, 'speciality' => $speciality]);
     }
-
     // Show doctor information in profile
-    public function doctorProfile(Request $request)
+    public function doctorProfile(Request $request, $id)
     {
+        $doctor = Doctor::find($id);
+        $speciality_id = Doctor::select('speciality_id')->where('id', $id)->value('speciality_id');
+        $speciality = Speciality::where('id', $speciality_id)->first();
+        return view('doctor.profile', ['doctor' => $doctor, 'speciality_id' => $speciality_id, 'speciality' => $speciality]);
     }
-
     // get date and time doctors
     public function dateTime(Request $request)
     {
     }
-
-    //==========================================
-    // public function insert_image(Request $request){
-    //     $request->validate([
-    //         'name' => 'required',
-    //         'profile_img' => 'required|image|max:2048'
-    //     ]);
-    //     $image_file = $request->profile_img;
-    //     $image = Doctor::make($image_file);
-    //     Response::make($image->encode('jpeg'));
-
-    //     $form_data = array(
-    //         'name' => $request->name,
-    //         'profile_img' => $image
-    //     );
-
-    //     Doctor::create($form_data);
-    //     return redirect()->back()->with('success', 'Image store in database successfully');
-
-    // }
-
-    // function fetch_image($image_id){
-    //     $image = Doctor::findOrFail($image_id);
-    //     $image_file = Doctor::make($image->profile_img);
-    //     $response = Response::make($image_file->encode('jpeg'));
-
-    //     $response->header('Content-type', 'image/jpeg');
-    //     return $response;
-    // }
-    //==========================================
 }

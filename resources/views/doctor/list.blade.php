@@ -18,7 +18,8 @@
                     <img src="{{ asset('/icon/placeholder.png') }}" alt="location" class="locationIcon pt-1 ml-2" id="">
                 </div>
                 <div class="d-flex justify-content-start align-items-center">
-                    <a href="doctorProfile.html" class="takeTurn btn btn-success px-3" id="">دریافت نوبت</a>
+                    <a href="{{route('doctorProfile',$item->id)}}" class="takeTurn btn btn-success px-3" id="">دریافت
+                        نوبت</a>
                 </div>
             </div>
             <div class="flip-card ">
@@ -27,7 +28,7 @@
                         <img src="{{ asset('/images') }}/{{$item->profile_img}}" alt="Avatar" class="imgAvatar col">
                     </div>
                     <div class="flip-card-back bg-info d-flex align-items-center justify-content-center">
-                        <a href="index.html" class="nameAvatar m-0 ">پروفایل</a>
+                        <a href="{{route('doctorProfile',$item->id)}}" class="nameAvatar m-0 ">پروفایل</a>
                     </div>
                 </div>
             </div>

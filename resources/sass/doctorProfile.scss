@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css?family=Barlow:100,200,300,400,500,600,700,800,900");
+section.profile {
+  width: 80%;
+  margin: 0 auto !important;
+  .imgAvatar {
+    display: block;
+    border-radius: 50%;
+    width: 125px;
+    height: 125px;
+    margin: 0 auto !important;
+  }
+  .titleCard {
+    background-color: rgb(63, 162, 184);
+    text-align: center;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 500;
+    width: 100%;
+    padding: 10px 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .title {
+    font-weight: 700;
+  }
+  .name {
+    font-weight: 400;
+    font-size: 30px;
+  }
+  a.takeTurn {
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 16px;
+    border: none;
+  }
+  .profileLink {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .address {
+    font-weight: 700;
+  }
+  .locationIcon {
+    width: 18px;
+    height: 22px;
+  }
+  .information {
+    &_title {
+      font-size: 25px;
+      font-weight: 400;
+    }
+  }
+  #map {
+    height: 200px;
+    width: 100%;
+  }
+  .form-group {
+    .dateTimePicker {
+      width: 100%;
+      .dateTime {
+        width: 100%;
+      }
+    }
+  }
+  a.getAppointment {
+    font-size: 20px !important;
+    font-weight: 800;
+  }
+  td {
+    border-radius: 0 !important;
+  }
+
+  tr th {
+    font-weight: 500;
+  }
+
+  .timepicker {
+    max-width: 100px;
+    border-radius: 0;
+  }
+  #appointmentModal {
+    .modal-title {
+      text-align: center;
+      color: red;
+      font-weight: 600;
+    }
+  }
+  .appointmentModal {
+  }
+}
+//==================================================================================================
+// comment
+
+.container {
+  // width: 100% !important ;
+  // margin-right: 0 !important;
+  form {
+    width: 100%;
+    margin-right: 0 auto;
+    div.input-group {
+      position: relative;
+      display: block;
+      label.label-input {
+        display: block !important;
+        width: 19% !important;
+        padding: 0 10px;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 900;
+      }
+      input {
+        border: none;
+        width: 100%;
+        border-radius: 15px !important;
+        padding: 10px;
+        z-index: 1;
+        // background: linear-gradient(100deg,(#1d3557,#a8dadc));
+        color: rgb(112, 13, 33);
+        appearance: none;
+        &::placeholder {
+          color: rgb(112, 13, 33);
+        }
+
+        &:focus {
+          z-index: 1;
+          outline: none !important;
+          // border:none !important;
+          box-shadow: none;
+        }
+      }
+      .addComment {
+        position: absolute;
+        // right: -2px;
+        left: 0;
+        top: 45%;
+        width: 38px;
+        height: 38px;
+        border-radius: 50px;
+        z-index: 2;
+        margin-right: auto !important;
+        &:focus {
+          outline: none !important;
+          border: none !important;
+        }
+      }
+    }
+  }
+}
+.userName {
+  color: #3fa2b8;
+  font-weight: 700;
+  
+}
+.list-container {
+  margin-right: 0 !important;
+  ul.todo-list {
+     margin-right: 0 !important;
+    width: 60%;
+    margin: 4rem auto;
+    li.todo {
+      width: 80%;
+      height: 45px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background: #faeef6;
+      padding: 1rem;
+      // border-radius: 16px;
+      // opacity: 0;
+      transition: all 0.5s ease-in-out;
+
+      div {
+        align-content: center;
+        align-items: center;
+        position: relative;
+        input#complete {
+          -wevkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          border: 2px solid red;
+          width: 20px;
+          height: 20px;
+        }
+        button {
+          color: rgb(214, 238, 0);
+          background: #f1faee;
+          border: none;
+          position: absolute;
+          right: 1rem;
+          top: -10px !important;
+          &:focus {
+            outline: none !important;
+            // border: none !important;
+          }
+          &:hover {
+            opacity: 80%;
+          }
+        }
+      }
+    }
+  }
+}
+.fade-in {
+  opacity: 1;
+}
+//==================================================================================================
+
+

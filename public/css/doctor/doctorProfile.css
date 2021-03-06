@@ -1,0 +1,193 @@
+@import url(https://fonts.googleapis.com/css?family=Barlow:100,200,300,400,500,600,700,800,900);
+section.profile {
+  width: 80%;
+  margin: 0 auto !important;
+}
+section.profile .imgAvatar {
+  display: block;
+  border-radius: 50%;
+  width: 125px;
+  height: 125px;
+  margin: 0 auto !important;
+}
+section.profile .titleCard {
+  background-color: #3fa2b8;
+  text-align: center;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 500;
+  width: 100%;
+  padding: 10px 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+section.profile .title {
+  font-weight: 700;
+}
+section.profile .name {
+  font-weight: 400;
+  font-size: 30px;
+}
+section.profile a.takeTurn {
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 16px;
+  border: none;
+}
+section.profile .profileLink {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+}
+section.profile .address {
+  font-weight: 700;
+}
+section.profile .locationIcon {
+  width: 18px;
+  height: 22px;
+}
+section.profile .information_title {
+  font-size: 25px;
+  font-weight: 400;
+}
+section.profile #map {
+  height: 200px;
+  width: 100%;
+}
+section.profile .form-group .dateTimePicker {
+  width: 100%;
+}
+section.profile .form-group .dateTimePicker .dateTime {
+  width: 100%;
+}
+section.profile a.getAppointment {
+  font-size: 20px !important;
+  font-weight: 800;
+}
+section.profile td {
+  border-radius: 0 !important;
+}
+section.profile tr th {
+  font-weight: 500;
+}
+section.profile .timepicker {
+  max-width: 100px;
+  border-radius: 0;
+}
+section.profile #appointmentModal .modal-title {
+  text-align: center;
+  color: red;
+  font-weight: 600;
+}
+.container form {
+  width: 100%;
+  margin-right: 0 auto;
+}
+.container form div.input-group {
+  position: relative;
+  display: block;
+}
+.container form div.input-group label.label-input {
+  display: block !important;
+  width: 19% !important;
+  padding: 0 10px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+.container form div.input-group input {
+  border: none;
+  width: 100%;
+  border-radius: 15px !important;
+  padding: 10px;
+  z-index: 1;
+  color: #700d21;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.container form div.input-group input::-moz-placeholder {
+  color: #700d21;
+}
+.container form div.input-group input:-ms-input-placeholder {
+  color: #700d21;
+}
+.container form div.input-group input::placeholder {
+  color: #700d21;
+}
+.container form div.input-group input:focus {
+  z-index: 1;
+  outline: none !important;
+  box-shadow: none;
+}
+.container form div.input-group .addComment {
+  position: absolute;
+  left: 0;
+  top: 45%;
+  width: 38px;
+  height: 38px;
+  border-radius: 50px;
+  z-index: 2;
+  margin-right: auto !important;
+}
+.container form div.input-group .addComment:focus {
+  outline: none !important;
+  border: none !important;
+}
+
+.userName {
+  color: #3fa2b8;
+  font-weight: 700;
+}
+
+.list-container {
+  margin-right: 0 !important;
+}
+.list-container ul.todo-list {
+  margin-right: 0 !important;
+  width: 60%;
+  margin: 4rem auto;
+}
+.list-container ul.todo-list li.todo {
+  width: 80%;
+  height: 45px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #faeef6;
+  padding: 1rem;
+  transition: all 0.5s ease-in-out;
+}
+.list-container ul.todo-list li.todo div {
+  align-content: center;
+  align-items: center;
+  position: relative;
+}
+.list-container ul.todo-list li.todo div input#complete {
+  -wevkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+          appearance: none;
+  border: 2px solid red;
+  width: 20px;
+  height: 20px;
+}
+.list-container ul.todo-list li.todo div button {
+  color: #d6ee00;
+  background: #f1faee;
+  border: none;
+  position: absolute;
+  right: 1rem;
+  top: -10px !important;
+}
+.list-container ul.todo-list li.todo div button:focus {
+  outline: none !important;
+}
+.list-container ul.todo-list li.todo div button:hover {
+  opacity: 80%;
+}
+
+.fade-in {
+  opacity: 1;
+}
