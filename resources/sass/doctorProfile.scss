@@ -65,8 +65,13 @@ section.profile {
     }
   }
   a.getAppointment {
-    font-size: 20px !important;
-    font-weight: 800;
+    font-size: 16px !important;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #328597 !important;  
+    &:hover{
+      background-color: #0cb0d4 !important;
+    }
   }
   td {
     border-radius: 0 !important;

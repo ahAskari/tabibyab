@@ -1,5 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/index.js": "/js/index.js",
+    "/js/map.js": "/js/map.js",
+    "/js/userComment.js": "/js/userComment.js",
     "/css/doctor/doctorProfile.css": "/css/doctor/doctorProfile.css",
     "/css/app.css": "/css/app.css",
     "/css/index.css": "/css/index.css",

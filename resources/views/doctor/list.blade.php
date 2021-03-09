@@ -2,7 +2,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/doctor/doctorList.css') }}">
 <section class="container">
-    @foreach ($doctors as $item)
+    @foreach ($speciality->doctor as $item)
     <div class="infoBox bg-light mx-auto mb-1 shadow-lg border-bottom px-3 py-3" id="">
         <div class="d-flex justify-content-center align-items-start">
             <div class="infoBox_content text-right mr-5 align-items-center col-md-9 col-7">
@@ -11,7 +11,7 @@
                     <p class="name border-bottom  pt-2 d-inline" id="name">{{ $item->name }}</p>
                 </div>
                 <p class="specialty text-secondary mt-3 pr-4 mb-0" id="specialty">{{$speciality->title}}</p>
-                <p class="text-secondary pr-4">فوق تخصص گوارش و کبد</p>
+                {{-- <p class="text-secondary pr-4">فوق تخصص گوارش و کبد</p> --}}
                 <div class="d-flex justify-content-end">
                     <p class="text-secondary address" id="address">{{$item->address}}
                     </p>

@@ -61,8 +61,13 @@ section.profile .form-group .dateTimePicker .dateTime {
   width: 100%;
 }
 section.profile a.getAppointment {
-  font-size: 20px !important;
-  font-weight: 800;
+  font-size: 16px !important;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #328597 !important;
+}
+section.profile a.getAppointment:hover {
+  background-color: #0cb0d4 !important;
 }
 section.profile td {
   border-radius: 0 !important;
