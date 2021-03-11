@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +11,6 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -23,11 +21,14 @@
 
     <body>
         <div id="app">
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" dir="rtl" style="background-color: rgba(201, 250, 235, 0.411) !important; 
+  padding: 1px 6rem !important;">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{-- {{ config('app.name', 'طبیب یاب') }} --}}
+                        طبیب یاب
                     </a>
+
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -36,23 +37,31 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav mr-auto">
+                        <ul class="navbar-nav mم-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" tabindex="-1" aria-disabled="true"
+                                    href="{{route('doctorList')}}">لیست پزشکان</a>
 
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" tabindex="-1" aria-disabled="true"
+                                    href="{{route('showArticle')}}">مجله سلامت</a>
+                            </li>
                         </ul>
 
                         <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ml-auto">
+                        <ul class="navbar-nav mr-auto">
                             <!-- Authentication Links -->
                             @guest
                             @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('ورود') }}</a>
                             </li>
                             @endif
 
                             @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('ثبت نام') }}</a>
                             </li>
                             @endif
                             @else
@@ -63,9 +72,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    <a class="dropdown-item text-right" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('خروج') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -78,7 +87,7 @@
                     </div>
                 </div>
             </nav>
-            <main class="py-4">
+            <main class="py-4" style="padding-top: 0 !important">
                 @yield('content')
             </main>
 

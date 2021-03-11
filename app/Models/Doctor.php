@@ -5,12 +5,13 @@ namespace App\Models;
 use App\Models\Time;
 use App\Models\Day_hour;
 use App\Models\Day_hour_doctor;
+use App\Services\Permission\Traits\HasPermissions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Doctor extends Model
 {
-    use HasFactory;
+    use HasFactory, HasPermissions;
     protected $fillable = [
         'name',
         'profile_img',

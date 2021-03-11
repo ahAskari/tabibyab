@@ -10,7 +10,9 @@
                     <div class="titleCard text-secondary col-8" style="">نوبت دهی مطب</div>
                     <p class="name border-bottom  pt-2 d-inline" id="name">{{ $item->name }}</p>
                 </div>
-                <p class="specialty text-secondary mt-3 pr-4 mb-0" id="specialty">{{$speciality->title}}</p>
+                <p class="specialty text-secondary mt-3 pr-4 mb-0" id="specialty">
+                    {{$speciality->title}}
+                </p>
                 {{-- <p class="text-secondary pr-4">فوق تخصص گوارش و کبد</p> --}}
                 <div class="d-flex justify-content-end">
                     <p class="text-secondary address" id="address">{{$item->address}}
