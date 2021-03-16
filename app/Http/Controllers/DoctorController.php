@@ -19,7 +19,7 @@ class DoctorController extends Controller
         return view('index', ['title' => $title]);
     }
 
-    // show doctor lists
+    // show doctor with check speciality
     public function doctorList(Request $request)
     {
         $id = $request->get('specialyList');
@@ -27,21 +27,10 @@ class DoctorController extends Controller
         $speciality = Speciality::findOrfail($id);
         return view('doctor.list', ['speciality' => $speciality]);
     }
-    // whitout check speciality 
+    // show doctor list
     public function allDoctor(Request $request)
     {
         $doctors = Doctor::all();
-        // $speciality_id = Doctor::where('speciality_id');
-        // $speciality = Doctor::all();
-        // return $speciality->speciality_id;
-        // foreach ($doctors as $item) {
-        //     $doctor_id = $item->id;
-        // }
-        // ->where('id', $doctor_id )->value('speciality_id')
-        // $speciality_id = Doctor::all('speciality_id');
-
-        // $speciality = Speciality::where('id', $doctor_id)->get();
-
         return view('doctor.list', ['doctors' => $doctors]);
     }
     // Show doctor information in profile
