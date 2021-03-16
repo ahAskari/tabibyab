@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Day;
+use App\Models\Role;
 use App\Models\Doctor;
 use App\Http\Controllers;
 use Illuminate\Routing\Controller;
@@ -8,10 +9,11 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\IndexController;
+
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ArticleController;
-
 use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\DoctorsListController;
 use App\Services\Permission\Traits\HasPermissions;
@@ -30,14 +32,56 @@ use App\Services\Permission\Traits\HasPermissions;
 Route::get('/', [DoctorController::class, 'all'])->name('all');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/article', [ArticleController::class, 'showArticle'])->name('showArticle');
-Route::get('/doctors', [DoctorController::class, 'doctorList', DoctorController::class, 'dateTime'])->name('doctorList');
+Route::get('/doctors', [DoctorController::class, 'doctorList'])->name('doctorList');
+Route::get('/allDoctors', [DoctorController::class, 'allDoctor'])->name('allDoctor');
 Route::get('/doctors/{id}/profile', [DoctorController::class, 'doctorProfile'])->name('doctorProfile');
 Route::get('/drlist', [DoctorController::class, 'dateTime'])->name('dateTime');
 
-Route::get('/permission',function(){
-    auth()->user()->givePermissionsTo('add user');
+Route::prefix('panel')->group( function () {
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+     
 });
+
+
+
+
 Auth::routes();
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Route::get('/permission', function () {
+//     return view('permission');
+
+    // =============
+    // Role::find(1)->givePermissionsTo('delete user');
+    // auth()->user()->giveRolesTo('admin');
+    // dd(auth()->user()->can('delete user'));
+    // =============
+    
+    // dd(auth()->user()->hasRole('admin'));
+    // auth()->user()->refreshRoles('admin','doctor');
+    // auth()->user()->withdrawRoles('doctor');
+    // auth()->user()->giveRolesTo('admin', 'doctor');
+    // auth()->user()->givePermissionsTo(['add user', 'delete user', 'delete post']); // permisson assign
+
+    // auth()->user()->withdrawPermissions('delete user'); //remove permissions
+    // auth()->user()->refreshPermission(); // remove all permission
+    // auth()->user()->refreshPermission('delete user', 'add user');  // add this permission to user and remove other 
+    // dd(auth()->user()->hasPermission('delete user'));
+    // dd(auth()->user()->can('delete user'));
+// });
+
+
 
 
 

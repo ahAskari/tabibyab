@@ -1,6 +1,6 @@
 <?php
 
- 
+use App\Providers\PermissionServiceProvider;
 
 return [
 
@@ -176,7 +176,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         // App\Providers\ImageServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
+        PermissionServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*

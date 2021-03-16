@@ -27,7 +27,23 @@ class DoctorController extends Controller
         $speciality = Speciality::findOrfail($id);
         return view('doctor.list', ['speciality' => $speciality]);
     }
+    // whitout check speciality 
+    public function allDoctor(Request $request)
+    {
+        $doctors = Doctor::all();
+        // $speciality_id = Doctor::where('speciality_id');
+        // $speciality = Doctor::all();
+        // return $speciality->speciality_id;
+        // foreach ($doctors as $item) {
+        //     $doctor_id = $item->id;
+        // }
+        // ->where('id', $doctor_id )->value('speciality_id')
+        // $speciality_id = Doctor::all('speciality_id');
 
+        // $speciality = Speciality::where('id', $doctor_id)->get();
+
+        return view('doctor.list', ['doctors' => $doctors]);
+    }
     // Show doctor information in profile
     public function doctorProfile(Request $request, $id)
     {
@@ -35,7 +51,7 @@ class DoctorController extends Controller
         $speciality = Doctor::find($id)->speciality;
         $time = Doctor::find($id);
         $comment = Doctor::find($id);
-        return view('doctor.profile', ['doctor' => $doctor, 'speciality' => $speciality, 'time' => $time, 'comment'=> $comment]);
+        return view('doctor.profile', ['doctor' => $doctor, 'speciality' => $speciality, 'time' => $time, 'comment' => $comment]);
     }
     // get date and time doctors
     public function dateTime(Request $request, $id)

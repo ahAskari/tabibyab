@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +18,7 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/footer/footer.css') }}">
     </head>
 
     <body>
@@ -40,12 +42,15 @@
                         <ul class="navbar-nav mم-auto">
                             <li class="nav-item">
                                 <a class="nav-link" tabindex="-1" aria-disabled="true"
-                                    href="{{route('doctorList')}}">لیست پزشکان</a>
-
+                                    href="{{route('allDoctor')}}">لیست پزشکان</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" tabindex="-1" aria-disabled="true"
                                     href="{{route('showArticle')}}">مجله سلامت</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" tabindex="-1" aria-disabled="true"
+                                    href="{{route('users.index')}}">پنل مدیریت</a>
                             </li>
                         </ul>
 

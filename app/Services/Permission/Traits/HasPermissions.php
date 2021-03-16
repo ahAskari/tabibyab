@@ -14,14 +14,39 @@ trait HasPermissions
     public function givePermissionsTo(...$permissions)
     {
         $permissions = $this->getAllPermissions($permissions);
-        
-        if($permissions->isEmpty()) 
-        return $this;
-        
-        dd($this->permissions()->syncWithoutDetaching($permissions));   
+
+        if ($permissions->isEmpty())
+            return $this;
+
+        $this->permissions()->syncWithoutDetaching($permissions);
     }
     public function getAllPermissions(array $permissions)
     {
         return Permission::whereIn('name', Arr::flatten($permissions))->get();
+    }
+
+    public function withdrawPermissions(...$permissions)
+    {
+        $permissions = $this->getAllPermissions($permissions);
+        $this->permissions()->detach($permissions);
+        return $this;
+    }
+    public function refreshPermission(...$permissions)
+    {
+        $permissions = $this->getAllPermissions($permissions);
+        $this->permissions()->sync($permissions);
+        return $this;
+    }
+    public function hasPermission($permission)
+    {
+        return $this->hasPermissionThoughRole($permission) || $this->permissions->contains($permission);
+    }
+    protected function hasPermissionThoughRole(Permission $permission)
+    {
+        foreach ($permission->roles as $role) {
+            if ($this->roles->contains($role))
+                return true;
+        }
+        return false;
     }
 }

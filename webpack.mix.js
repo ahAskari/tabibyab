@@ -19,5 +19,6 @@ mix.js('resources/js/userComment.js', 'public/js')
     .sass('resources/sass/article-list.scss', 'public/css/article')
     .sass('resources/sass/doctorList.scss', 'public/css/doctor')
     .sass('resources/sass/doctorProfile.scss', 'public/css/doctor')
+    .sass('resources/sass/footer.scss', 'public/css/footer')
     .sass('resources/sass/index.scss', 'public/css')
     .sourceMaps();

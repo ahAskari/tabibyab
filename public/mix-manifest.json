@@ -5,7 +5,8 @@
     "/js/userComment.js": "/js/userComment.js",
     "/css/doctor/doctorProfile.css": "/css/doctor/doctorProfile.css",
     "/css/app.css": "/css/app.css",
-    "/css/index.css": "/css/index.css",
+    "/css/footer/footer.css": "/css/footer/footer.css",
     "/css/doctor/doctorList.css": "/css/doctor/doctorList.css",
-    "/css/article/article-list.css": "/css/article/article-list.css"
+    "/css/article/article-list.css": "/css/article/article-list.css",
+    "/css/index.css": "/css/index.css"
 }

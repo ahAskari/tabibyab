@@ -1,0 +1,157 @@
+// mixin
+$font1: 'Roboto', sans-serif;
+$font2: Georgia, serif;
+
+//Mixin related to font style and typography
+@mixin typography($font:font1,$size:14px,$weight:400,$height:25px,$color:red) {
+    // @if $font{
+    //     font-family: $font;
+    // }
+    // @else{
+    //     font-family: $font1;
+    // }
+
+    // font-family: $font;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $height;
+    color: $color;
+}
+
+//footer
+.footer {
+  margin-top: 3rem;
+  .footer-header {
+    div:first-child {
+      font-weight: 900;
+    }
+    p:first-child {
+      font-weight: 900;
+      font-size: 22px;
+      margin: 0;
+    }
+  }
+  width: 100%;
+  background-color: #001a34c4;
+  &__container {
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0 0 0;
+    // align-items: center;
+  }
+
+  &__content {
+    width: 20%;
+    h3 {
+      @include typography($font1, 22px, 800, 20px, #fff);
+      padding-bottom: 16px;
+    }
+
+    p {
+      @include typography($font1, 20px, 600, 25px, #a2a2a2);
+      margin: 10px 0;
+      &:hover {
+        color: #3b3a31;
+      }
+      &::before {
+        // content: ">     ";
+        padding-right: 5px;
+      }
+    }
+    &_line {
+      width: 80%;
+
+      display: flex;
+      &-1 {
+        width: 30%;
+        span {
+          display: inline-block;
+          border: #313131 solid 1px;
+          width: 100%;
+        }
+      }
+      &-2 {
+        width: 70%;
+        span {
+          display: inline-block;
+          border: white solid 1px;
+
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__app {
+    width: 20%;
+    h3 {
+      @include typography($font1, 18#fff);
+    }
+    a {
+      display: block;
+      margin: 1rem 0;
+    }
+  }
+
+  &__tags {
+    width: 100%;
+    padding-bottom: 3rem;
+    &_container {
+      margin: 0 auto;
+      width: 85%;
+    }
+    h3 {
+      @include typography($font1, 18px, 500, 22px, white);
+      display: inline-block;
+      padding-right: 1rem;
+    }
+    a {
+      @include typography($font1, 14px, 400, 25px, #a2a2a2);
+      padding-left: 10px;
+
+      text-decoration: none;
+      &:hover {
+        color: #76a72e;
+      }
+      &::after {
+        content: "/";
+        padding-left: 10px;
+      }
+      &:last-child {
+        &::after {
+          content: "";
+        }
+      }
+    }
+    &_summer {
+      padding-left: 0px !important;
+    }
+    border-bottom: 1px solid #3f3f3f;
+  }
+  padding-bottom: 2rem;
+  &__copyrghit {
+    &_container {
+      margin: 2rem auto 0 auto;
+      display: flex;
+      justify-content: space-between;
+      width: 85%;
+
+      p {
+        @include typography($font1, 14px, 400, 25px, #a2a2a2);
+      }
+      ul {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        li {
+          padding: 0 5px;
+          img {
+            height: 25px;
+          }
+        }
+      }
+    }
+  }
+}
