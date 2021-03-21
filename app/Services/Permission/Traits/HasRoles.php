@@ -19,10 +19,7 @@ trait HasRoles
         $this->roles()->syncWithoutDetaching($roles);
         return $this;
     }
-    public function getAllRoles(array $roles)
-    {
-        return Role::whereIn('name', Arr::flatten($roles))->get();
-    }
+    
     public function withdrawRoles(...$roles)
     {
         $roles = $this->getAllRoles($roles);
@@ -39,5 +36,8 @@ trait HasRoles
     {
         return $this->roles->contains('name', $role);
     }
-    
+    protected function getAllRoles(array $roles)
+    {
+        return Role::whereIn('name', Arr::flatten($roles))->get();
+    }
 }

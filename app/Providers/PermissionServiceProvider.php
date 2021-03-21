@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Permission;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
+
 class PermissionServiceProvider extends ServiceProvider
 {
     /**
@@ -29,5 +31,10 @@ class PermissionServiceProvider extends ServiceProvider
                 return $user->hasPermission($permission);
             });
         });
+
+        Blade::if('role', function ($role) {
+            return auth()->check() && auth()->user()->hasRole($role);
+        });
     }
+    
 }

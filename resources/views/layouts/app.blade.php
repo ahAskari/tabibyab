@@ -48,10 +48,6 @@
                                 <a class="nav-link" tabindex="-1" aria-disabled="true"
                                     href="{{route('showArticle')}}">مجله سلامت</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" tabindex="-1" aria-disabled="true"
-                                    href="{{route('users.index')}}">پنل مدیریت</a>
-                            </li>
                         </ul>
 
                         <!-- Right Side Of Navbar -->
@@ -77,6 +73,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @role('admin')
+                                    <a href=""></a>
+                                    <a class="dropdown-item text-right" href="{{route('users.index')}}">
+                                        {{ __('پنل مدیریت') }}
+                                    </a>
+                                    @endrole
                                     <a class="dropdown-item text-right" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('خروج') }}

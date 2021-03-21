@@ -20,7 +20,7 @@ trait HasPermissions
 
         $this->permissions()->syncWithoutDetaching($permissions);
     }
-    public function getAllPermissions(array $permissions)
+    protected function getAllPermissions(array $permissions)
     {
         return Permission::whereIn('name', Arr::flatten($permissions))->get();
     }

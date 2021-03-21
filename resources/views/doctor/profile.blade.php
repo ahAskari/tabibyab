@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/doctor/doctorProfile.css') }}">
-<section class="profile row d-flex justify-content-between  py-5 my-2 mx-0 " dir="rtl">
-    <div class="col-lg-6 col-md-12 col-12  " style="margin-right: 0 !important;">
+<section class="profile row d-flex justify-content-between shadow py-5 my-2 mx-0" dir="rtl">
+    <div class="col-lg-6 col-md-12 col-12" style="margin-right: 0 !important; " >
         <div class="border-bottom  mb-2 text-center ">
-            <img src="{{asset('images/')}}/{{$doctor->profile_img}}" class="imgAvatar" alt="">
+            <img src="{{asset('images/')}}/{{$doctor->profile_img}}" class="shadow imgAvatar" alt="">
             <p class="name border-bottom  pt-2 d-inline" id="name">{{$doctor->name}}</p>
-            <p class="specialty text-secondary mt-3 pr-4 mb-0" id="specialty">{{$speciality->title}} </p>
-            <p class="text-secondary pr-4">فوق تخصص گوارش و کبد</p>
+            <p class="speciality mt-3 pr-4 mb-0 " id="speciality">{{$speciality->title}} </p>
+            {{-- <p class="text-secondary pr-4">فوق تخصص گوارش و کبد</p> --}}
         </div>
         <div class="information text-right">
             <p class="information_title">درباره پزشک</p>
@@ -20,11 +20,11 @@
             <div id="map" class="map shadow"></div>
         </div>
     </div>
-    <div class="col-lg-6 col-md-12 col-12 shadow-sm " style="">
+    <div class="col-lg-6 col-md-12 col-12 p-0" style="">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <div class="titleCard">نوبت دهی مطب</div>
+            <div class="titleCard ">نوبت دهی مطب</div>
         </div>
-        <div class="form-group text-center">
+        <div class="form-group text-center shadow">
             <!-- <label for="appointment-datetime-local-input" class=""></label> -->
             {{-- <div class="dateTimePicker">
                 <input class="form-control" type="datetime-local" value="2020-08-19T13:45:00" class="dateTime"
@@ -70,8 +70,8 @@
         <div class="input-group text-right " style="margin: 0 !important">
             <!-- <label for="inputComment" class="shadow label-input">نظر بیماران</label> -->
             <label for="inputComment" class="shadow-sm">نظرات کاربران</label>
-            <input type="text" class="form-control border-bottom input text-right shadow" name="inputComment" id="inputComment"
-                placeholder="لطفا نظر خود را وارد کنید">
+            <input type="text" class="form-control border-bottom input text-right shadow" name="inputComment"
+                id="inputComment" placeholder="لطفا نظر خود را وارد کنید">
             <button type="submit" class="addComment d-none btn-success btn-input ">
                 <i class="fas fa-plus-circle"></i>
             </button>
@@ -82,7 +82,7 @@
             <div class="shadow ml-auto ">
                 @foreach ($comment->comments as $item)
                 <div class="form-group border-bottom rounded mb-2 col-12 text-right" style="width: 100%;">
-                    <p class="userName   py-2 " id="userName">username</p>
+                    <p class="userName py-2 " id="userName">username</p>
                     <p class="text-secondary">{{$item->content}}</p>
                 </div>
                 @endforeach
@@ -101,6 +101,7 @@
 
     </div>
 </div>
+
 @endsection
 @section('script')
 

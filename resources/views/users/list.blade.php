@@ -21,9 +21,9 @@
                     <td>{{$user->email}}</td>
                     <td>
                         @foreach ($user->roles as $role)
-                        <span class="badge badge-secondary">{{$role->persian_name}}</span>
+                        <span class="badge badge-danger">{{$role->persian_name}}</span>
                         @endforeach
-                    <td> <a href=""> @lang('users.edit') </a> </td>
+                    <td> <a href="{{route('users.edit',$user->id)}}"> @lang('users.edit') </a> </td>
                 </tr>
                 @empty
                 <p>

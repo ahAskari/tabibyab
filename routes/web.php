@@ -9,13 +9,15 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\IndexController;
 
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\DoctorsListController;
+use App\Http\Middleware\RoleMiddleware;
 use App\Services\Permission\Traits\HasPermissions;
 /*
 |--------------------------------------------------------------------------
@@ -36,11 +38,32 @@ Route::get('/doctors', [DoctorController::class, 'doctorList'])->name('doctorLis
 Route::get('/allDoctors', [DoctorController::class, 'allDoctor'])->name('allDoctor');
 Route::get('/doctors/{id}/profile', [DoctorController::class, 'doctorProfile'])->name('doctorProfile');
 Route::get('/drlist', [DoctorController::class, 'dateTime'])->name('dateTime');
+// middleware([RoleMiddleware::class])->
+// ['middleware'=>'role:admin']
 
-Route::prefix('panel')->group( function () {
+Route::group(['prefix' => 'panel', 'middleware' => 'role:admin'], function () {
     Route::get('users', [UserController::class, 'index'])->name('users.index');
-     
+    Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::post('users/{user}/update', [UserController::class, 'update'])->name('users.update');
+    Route::get('roles', [RoleController::class, 'index'])->name('roles.index');
+    Route::post('roles', [RoleController::class, 'store'])->name('roles.store');
+    Route::get('roles/{role_id}/edit', [RoleController::class, 'edit'])->name(
+        'roles.edit'
+    );
+    Route::post('roles/{role_id}/edit', [RoleController::class, 'update'])->name('roles.update');
 });
+
+// Route::prefix('panel')->middleware('role')->group(function () {
+//     Route::get('users', [UserController::class, 'index'])->name('users.index');
+//     Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+//     Route::post('users/{user}/update', [UserController::class, 'update'])->name('users.update');
+//     Route::get('roles', [RoleController::class, 'index'])->name('roles.index');
+//     Route::post('roles', [RoleController::class, 'store'])->name('roles.store');
+//     Route::get('roles/{role_id}/edit', [RoleController::class, 'edit'])->name(
+//         'roles.edit'
+//     );
+//     Route::post('roles/{role_id}/edit', [RoleController::class, 'update'])->name('roles.update');
+// });
 
 
 
@@ -93,4 +116,4 @@ Auth::routes();
 // Route::get('store_image', [DoctorsListController::class, 'all']);
 // Route::post('store_image/insert_image', [DoctorsListController::class, 'insert_image']);
 // Route::get('store_image/fetch_image/{id}', [DoctorsListController::class, 'fetch_image']);
-// ==============================
+// ============================== 

@@ -11,7 +11,7 @@
                     <div class="titleCard text-secondary col-8" style="">نوبت دهی مطب</div>
                     <p class="name border-bottom  pt-2 d-inline" id="name">{{ $item->name }}</p>
                 </div>
-                <p class="specialty text-secondary mt-3 pr-4 mb-0" id="specialty">
+                <p class="speciality text-secondary mt-3 pr-4 mb-0" id="speciality">
                     {{$speciality->title}}
                     {{-- @if(Route::is('doctorList') )
                     @else
@@ -55,7 +55,7 @@
                     <div class="titleCard text-secondary col-8" style="">نوبت دهی مطب</div>
                     <p class="name border-bottom  pt-2 d-inline" id="name">{{ $doctor->name }}</p>
                 </div>
-                <p class="specialty text-secondary mt-3 pr-4 mb-0" id="specialty">
+                <p class="speciality text-secondary mt-3 pr-4 mb-0" id="speciality">
                     {{$doctor->speciality->title}}
                 </p>
                 {{-- <p class="text-secondary pr-4">فوق تخصص گوارش و کبد</p> --}}
@@ -69,7 +69,7 @@
                         نوبت</a>
                 </div>
             </div>
-            <div class="flip-card ">
+            <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <img src="{{ asset('/images') }}/{{$doctor->profile_img}}" alt="Avatar" class="imgAvatar
