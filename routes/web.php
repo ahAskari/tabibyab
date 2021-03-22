@@ -38,6 +38,10 @@ Route::get('/doctors', [DoctorController::class, 'doctorList'])->name('doctorLis
 Route::get('/allDoctors', [DoctorController::class, 'allDoctor'])->name('allDoctor');
 Route::get('/doctors/{id}/profile', [DoctorController::class, 'doctorProfile'])->name('doctorProfile');
 Route::get('/drlist', [DoctorController::class, 'dateTime'])->name('dateTime');
+Route::get('/registers', function () {
+    // return "og";
+    return view('auth.doctor_register');
+})->name('doctor_register');
 // middleware([RoleMiddleware::class])->
 // ['middleware'=>'role:admin']
 

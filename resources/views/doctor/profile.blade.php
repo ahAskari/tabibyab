@@ -1,8 +1,10 @@
 @extends('layouts.app')
-@section('content')
+@section('links')
 <link rel="stylesheet" href="{{ asset('css/doctor/doctorProfile.css') }}">
+@endsection
+@section('content')
 <section class="profile row d-flex justify-content-between shadow py-5 my-2 mx-0" dir="rtl">
-    <div class="col-lg-6 col-md-12 col-12" style="margin-right: 0 !important; " >
+    <div class="col-lg-6 col-md-12 col-12" style="margin-right: 0 !important; ">
         <div class="border-bottom  mb-2 text-center ">
             <img src="{{asset('images/')}}/{{$doctor->profile_img}}" class="shadow imgAvatar" alt="">
             <p class="name border-bottom  pt-2 d-inline" id="name">{{$doctor->name}}</p>

@@ -2,6 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/js/index.js": "/js/index.js",
     "/js/map.js": "/js/map.js",
+    "/js/check_user.js": "/js/check_user.js",
     "/js/userComment.js": "/js/userComment.js",
     "/css/doctor/doctorProfile.css": "/css/doctor/doctorProfile.css",
     "/css/app.css": "/css/app.css",

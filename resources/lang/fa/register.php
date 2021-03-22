@@ -1,6 +1,7 @@
 <?php
 return [
-    'title' => 'ثبت نام کاربر',
+    'user-title' => 'ثبت نام کاربر',
+    'doctor-title' => 'ثبت نام پزشک',
     'name' => 'نام',
     'email' => 'آدرس ایمیل',
     'password' => 'کلمه عبور',
