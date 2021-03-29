@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Speciality;
+use App\Models\Time;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +42,23 @@ class UserProfileController extends Controller
             $user->tell_no = $request->tell_no;
             $user->address = $request->address;
             $user->update($request->all());
+
+            // $doctor_date = new Time();
+            // $doctor_date->date = $request->date;
+            // $doctor_date->hour = $request->hour;
+            // $doctor_date->user_id = Auth::user()->id;
+            // $doctor_date->save();
         }
+
+        // if ($request->has('submit')) {
+        //     $user = Auth::user();
+        //     $user->profile_img = $request->profile_img;
+        //     $user->name = $request->name;
+        //     $user->speciality_id = $request->speciality_id;
+        //     $user->tell_no = $request->tell_no;
+        //     $user->address = $request->address;
+        //     $user->update($request->all());
+        // }
 
         return back()->with('success', true);
     }

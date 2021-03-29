@@ -20,6 +20,10 @@
     input {
         border-radius: 5px !important;
     }
+
+    a.getAppointment {
+        background-color: #9d9bff93;
+    }
 </style>
 @endsection
 @section('content')
@@ -76,59 +80,83 @@
                 {{-- <div class="form-group">
                     <label for="email">@lang('profile.email')</label>
                     <input type="email" class="form-control" id="email" value="{{$doctor->email}}" name="email"
-                        placeholder="" required>
-                    <div class="invalid-tooltip">
-                        لطفا ایمیل خود را وارد کنید
-                    </div>
-                </div> --}}
+                placeholder="" required>
+                <div class="invalid-tooltip">
+                    لطفا ایمیل خود را وارد کنید
+                </div>
+            </div> --}}
 
-                {{-- speciality --}}
-                <div class="form-group">
-                    <label for="speciality">@lang('profile.speciality')</label>
-                    {{-- <input type="text" name="speciality" id="speciality" class="form-control"
+            {{-- speciality --}}
+            <div class="form-group">
+                <label for="speciality">@lang('profile.speciality')</label>
+                {{-- <input type="text" name="speciality" id="speciality" class="form-control"
                         value="{{$speciality->title}}" required> --}}
-                    <select name="speciality_id" class="speciality_id custom-select custom-select" id="speciality_id"
-                        required dir="rtl">
-                        @if (empty($speciality->title))
-                        <option value="" selected disabled> تخصص خود را انتخاب کنید</option>
-                        @else
-                        <option value="{{$speciality->id}}" selected disabled>{{$speciality->title}}</option>
-                        @endif
-                        @foreach ($speciality_list as $item)
-                        <option value="{{$item->id}}">{{ $item->title }}</option>
-                        @endforeach
-                    </select>
-                    <div class="invalid-tooltip">
-                        لطفا آدرس خود را وارد کنید
-                    </div>
-                </div>
-                {{-- tell no --}}
-                <div class="form-group">
-                    <label for="tell_no">@lang('profile.tellnumber')</label>
-                    <input type="tel" name="tell_no" id="tell_no" class="tell_no shadow-sm form-control"
-                        value="{{$doctor->tell_no}}" placeholder="989370471234" minlength="10" maxlength="13" required>
-                    <div class="invalid-tooltip">
-                        لطفا آدرس خود را وارد کنید
-                    </div>
-                </div>
-                {{-- address --}}
-                <div class="form-group">
-                    <label for="address">@lang('profile.address')</label>
-                    <textarea name="address" id="address" class="form-control" placeholder="آدرس مطب" cols="30"
-                        rows="10" required>{{$doctor->address}}</textarea>
-                    <div class="invalid-tooltip">
-                        لطفا آدرس خود را وارد کنید
-                    </div>
-                </div>
-                <div class="form-group mb-3 text-right">
-                    <button class="btn btn-primary btn shadow" name="submit" id="submit" type="submit">ثبت
-                        تغیرات</button>
+
+                {{-- <select name="speciality_id" class="speciality_id custom-select custom-select" id="speciality_id"
+                    required dir="rtl">
+                    @if (empty($speciality->title))
+                    <option value="" selected disabled> تخصص خود را انتخاب کنید</option>
+                    @else
+                    <option value="{{$speciality->id}}" selected disabled>{{$speciality->title}}</option>
+                @endif
+                @foreach ($speciality_list as $item)
+                <option value="{{$item->id}}">{{ $item->title }}</option>
+                @endforeach
+                </select> --}}
+
+                @if (empty($speciality->title))
+                <select name="speciality_id" class="speciality_id custom-select custom-select" id="speciality_id"
+                    required dir="rtl">
+                    <option value="" selected disabled> تخصص خود را انتخاب کنید</option>
+                    @foreach ($speciality_list as $item)
+                    <option value="{{$item->id}}">{{ $item->title }}</option>
+                    @endforeach
+                </select>
+                @else
+                <select name="speciality_id" class="speciality_id custom-select custom-select" id="speciality_id"
+                    required dir="rtl">
+                    <option value="{{$speciality->id}}" selected>{{$speciality->title}}</option>
+                    @foreach ($speciality_list as $item)
+                    <option value="{{$item->id}}">{{ $item->title }}</option>
+                    @endforeach
+                </select>
+                @endif
+
+                <div class="invalid-tooltip">
+                    لطفا آدرس خود را وارد کنید
                 </div>
             </div>
-    </form>
-    {{-- date time --}}
-    <div class="">
-        <form action="" method="post">
+            {{-- tell no --}}
+            <div class="form-group">
+                <label for="tell_no">@lang('profile.tellnumber')</label>
+                <input type="tel" name="tell_no" id="tell_no" class="tell_no shadow-sm form-control"
+                    value="{{$doctor->tell_no}}" placeholder="989370471234" minlength="10" maxlength="13" required>
+                <div class="invalid-tooltip">
+                    لطفا آدرس خود را وارد کنید
+                </div>
+            </div>
+            {{-- address --}}
+            <div class="form-group">
+                <label for="address">@lang('profile.address')</label>
+                <textarea name="address" id="address" class="form-control" placeholder="آدرس مطب" cols="30" rows="10"
+                    required>{{$doctor->address}}</textarea>
+                <div class="invalid-tooltip">
+                    لطفا آدرس خود را وارد کنید
+                </div>
+            </div>
+            <div class="form-group mb-3 text-right">
+                <button class="btn btn-primary btn shadow" name="submit" id="submit" type="submit">ثبت
+                    تغیرات</button>
+            </div>
+        </div>
+
+        {{-- </form> --}}
+
+
+        {{-- date time --}}
+        <div class="">
+
+            {{-- <form action="" method="post"> --}}
 
 
             <div class="form-group text-right" style="margin-bottom: 19rem">
@@ -151,7 +179,7 @@
                     <option value="۲۲:۰۰">۲۲:۰۰</option>
                 </select>
                 <label for="email">روز و ساعت حضور در مطب</label>
-                <input type="text" readonly class="date form-control" placeholder="تاریخ حضور پزشک" name="date"
+                <input type="text" value="" class="date form-control" placeholder="تاریخ حضور پزشک" name="date"
                     id="pdpDefault" />
             </div>
             <input type="submit" value="ثبت" name="time" id="time" class="btn btn-success">
@@ -163,16 +191,16 @@
                         <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
                         <label class="btn btn-outline-primary" for="btnradio3">عصر</label>
                     </div> --}}
-        </form>
+    </form>
 
-        <div class="form-group">
-            @foreach ($time->times as $item)
-            <a href="" class="getAppointment btn btn-sm bg-warning m-2" data-toggle="modal"
-                data-target="#appointmentModal">{{$item->date}} - ساعت :
-                {{$item->hour}}</a>
-            @endforeach
-        </div>
+    <div class="form-group">
+        @foreach ($time->times as $item)
+        <a href="" class="getAppointment btn btn-sm m-2" data-toggle="modal"
+            data-target="#appointmentModal">{{$item->date}} - ساعت :
+            {{$item->hour}}</a>
+        @endforeach
     </div>
+</div>
 
 </div>
 

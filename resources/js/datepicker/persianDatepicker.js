@@ -31,7 +31,7 @@
       var defaults = {
         months: ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"],
         dowTitle: ["شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنج شنبه", "جمعه"],
-        shortDowTitle: ["ش", "ی", "د", "س", "چ", "پ", "ج"],
+        shortDowTitle: ["شنبه", "1شنبه", "2شنبه", "3شنبه", "4شنبه", "5شنبه", "جمعه"],
         showGregorianDate: !1,
         persianNumbers: !0,
         formatDate: "YYYY/MM/DD",
@@ -213,7 +213,7 @@
         _head = $('<div class="pdp-header" ' + self.headerStyle + ' />');
         _head.appendTo(this.calendar);
         _next = $('<div class="nextArrow" />')
-          .html(this.options.nextArrow)
+          // .html(this.options.nextArrow)
           .attr('title', 'ماه بعد');
 
         /*yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy*/
@@ -355,7 +355,7 @@
           .append(_yearText);
         _head.append(titleYearMonth);
         _prev = $('<div class="prevArrow" />')
-          .html(this.options.prevArrow)
+          // .html(this.options.prevArrow)
           .attr('title', 'ماه قبل');
 
         if (self.options.startDate == null || (self.persianDate.parse(self.options.startDate).year < self.persianDate.year || self.persianDate.parse(self.options.startDate).month < self.persianDate.month)) {
@@ -438,7 +438,7 @@
       footer: function () {
         var self = this;
         _footer = $('<div class="pdp-footer" ' + self.footerStyle + ' />');
-        _footer.appendTo(this.calendar);
+        // _footer.appendTo(this.calendar);
 
         if (self.options.selectableMonths._indexOf(self.persianDate.month) > -1) {
           _goToday = $('<a class="goToday btn btn-dark btn-block" />');

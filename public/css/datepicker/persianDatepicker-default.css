@@ -20,7 +20,9 @@
 .pdp-default {
     position: absolute;    
     direction: rtl;    
-    color: #555;
+    /* color: #555; */
+    border: none !important;
+    border-radius: 16px;
     box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.19);
 	z-index: 99999;
 }
@@ -47,9 +49,10 @@
 
 .pdp-default .pdp-header{
     background-color: #ffffff;
-    border-top: 2px solid #999;
+    box-shadow: 1px 1px 8px 1px rgba(236, 68, 68, 0.19);
+    /* border-top: 1px solid #999;
     border-left: 1px solid #999;
-    border-right: 1px solid #999;
+    border-right: 1px solid #999; */
     border-bottom: none;   
     padding: 2px;
     font-weight: bold;
@@ -119,27 +122,38 @@
 
 .pdp-default .nextArrow:hover, .pdp-default .prevArrow:hover{
     color: #0073ea;
+    
 }
 
 .pdp-default .cell {  
     display: inline-block;    
     cursor: default;
     text-align: center; 
+    border-radius: 3px;
+    color: rgb(0, 119, 255);
+    font-weight: 600;
 }
 
 /* Days of the week */
-.pdp-default .dows {  
-    background: #5F5D5D;/*#006fe0;*/
-    color: #fff;    
+.pdp-default .dows{  
+
+}
+.pdp-default .dows .dow{  
+    color: rgb(0, 0, 0);
+    font-size: 13px !important;
+    border: none !important;
+    box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.10);
+    /* font-size: ; */
+    /* background-color: cadetblue; */
 }
 .pdp-default .dow {            
-    font: bold 14px 'helvetica';
+    /* font: bold 14px 'helvetica'; */
     border: 1px solid #5F5D5D;
 }
 
 .pdp-default .days{
     background-color: #ffffff;
-    border: 1px solid #999;
+    /* border: 1px solid #999; */
     border-top: none;
     font: normal 12px Tahoma;   
 }
@@ -150,12 +164,16 @@
 
 .pdp-default .day:hover{
     background: #f3f3f3;
-    border: 1px solid #bbb;
+    border: 1px solid rgb(0, 0, 0);
     border-radius: 2px;
+    cursor: pointer;
 }
 .pdp-default .selday, .pdp-default .selday:hover{
-    background: #eadaa6;
-    border-color: #eb5b04;
+    /* background: #0d00bd0e; */
+    /* border: ; */
+    color: #0069d1ce !important;
+    /* border-color: #000000; */
+    border: solid 1px #000 !important;
 }
 
 .pdp-default .friday{
@@ -163,12 +181,13 @@
 }
 
 .pdp-default .today{
-    color: #fff;
-    background: #0073ea;
+    color: #fff !important;
+    background: #0071eab2;
 }
 .pdp-default .today:hover{
-    color: #fff;
-    background: #0073ea;    
+    color: rgb(32, 4, 4) !important; 
+    /* background: #0073ea;     */
+    border-color: #444444;
 }
 
 .pdp-default .disday, .pdp-default .disday:hover{
