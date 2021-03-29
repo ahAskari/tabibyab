@@ -37,7 +37,6 @@ class UserProfileController extends Controller
             $user = Auth::user();
             $user->profile_img = $request->profile_img;
             $user->name = $request->name;
-            // $user->email = $request->email;
             $user->speciality_id = $request->speciality_id;
             $user->tell_no = $request->tell_no;
             $user->address = $request->address;
