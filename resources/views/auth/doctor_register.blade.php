@@ -9,7 +9,7 @@
 <div class="row justify-content-center mt-5 mx-auto" dir="rtl">
     <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link" id="v-pills-home-tab" href="{{ route('register') }}">ثبت نام کاربران</a>
-        <a class="nav-link active" id="v-pills-profile-tab" href="{{route('doctor_register')}}" aria-selected="false">ثبت نام
+        <a class="nav-link active" id="v-pills-profile-tab" href="" aria-selected="false">ثبت نام
             پزشکان</a>
     </div>
     <div class="tab-content col-6" id="v-pills-tabContent">

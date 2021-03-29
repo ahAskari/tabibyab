@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="{{ asset('css/doctor/doctorList.css') }}">
 <section class="container pt-2">
     @if(Route::is('doctorList'))
-    @foreach ($speciality->doctor as $item)
-    <div class="infoBox bg-light mx-auto mb-1 shadow-lg border-bottom px-3 py-3" id="">
+    @foreach ($speciality->user as $item)
+    <div class="infoBox bg-light mx-auto mb-1 shadow-lg border-bottom px-3 py-3 col-lg-9 rounded" id="">
         <div class="d-flex justify-content-center align-items-start">
             <div class="infoBox_content text-right mr-5 align-items-center col-md-9 col-7">
                 <div class="d-flex justify-content-between align-items-center">
@@ -13,11 +13,6 @@
                 </div>
                 <p class="speciality text-secondary mt-3 pr-4 mb-0" id="speciality">
                     {{$speciality->title}}
-                    {{-- @if(Route::is('doctorList') )
-                    @else
-                    fsdafdsfds
-                    @endif --}}
-
                 </p>
                 {{-- <p class="text-secondary pr-4">فوق تخصص گوارش و کبد</p> --}}
                 <div class="d-flex justify-content-end">
@@ -44,11 +39,12 @@
         </div>
     </div>
     @endforeach
+    
 
     @else
 
     @foreach ($doctors as $doctor)
-    <div class="infoBox bg-light mx-auto mb-1 shadow-lg border-bottom px-3 py-3" id="">
+    <div class="infoBox bg-light mx-auto mb-1 shadow-lg border-bottom px-3 py-3 col-lg-9 rounded" id="">
         <div class="d-flex justify-content-center align-items-start">
             <div class="infoBox_content text-right mr-5 align-items-center col-md-9 col-7">
                 <div class="d-flex justify-content-between align-items-center">
@@ -57,8 +53,8 @@
                 </div>
                 <p class="speciality text-secondary mt-3 pr-4 mb-0" id="speciality">
                     {{$doctor->speciality->title}}
+                    
                 </p>
-                {{-- <p class="text-secondary pr-4">فوق تخصص گوارش و کبد</p> --}}
                 <div class="d-flex justify-content-end">
                     <p class="text-secondary address" id="address">{{$doctor->address}}
                     </p>
@@ -82,7 +78,22 @@
             </div>
         </div>
     </div>
+    <div class="form-group">
+        {{-- {{$time->date}} --}}
+    </div>
+    @endforeach
+
+    @foreach ($times as $time) 
+    {{$time->date }}
+    {{$time->hour }}
+    
     @endforeach
     @endif
+    {{-- <div class="row mx-auto justify-center">
+        {{ $user_doctor->links() }}
+    </div> --}}
+    
+    <div>
+    </div>
 </section>
 @endsection

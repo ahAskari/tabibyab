@@ -18,7 +18,7 @@
                 <p class="text-secondary shadow-sm address" id="address">{{$doctor->address}}
                 </p>
             </div>
-            <p><span>تلفن: </span>{{$doctor->tell_nu}}</p>
+            <p><span>تلفن: </span>{{$doctor->tell_no}}</p>
             <div id="map" class="map shadow"></div>
         </div>
     </div>
@@ -27,8 +27,8 @@
             <div class="titleCard ">نوبت دهی مطب</div>
         </div>
         <div class="form-group text-center shadow">
-            <!-- <label for="appointment-datetime-local-input" class=""></label> -->
-            {{-- <div class="dateTimePicker">
+            {{-- <label for="appointment-datetime-local-input" class=""></label>
+            <div class="dateTimePicker">
                 <input class="form-control" type="datetime-local" value="2020-08-19T13:45:00" class="dateTime"
                     id="datetime-local-input">
             </div> --}}

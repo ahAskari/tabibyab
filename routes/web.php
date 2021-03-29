@@ -15,8 +15,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\DoctorsListController;
+use App\Http\Controllers\UserProfileController;
 use App\Http\Middleware\RoleMiddleware;
 use App\Services\Permission\Traits\HasPermissions;
 /*
@@ -38,12 +40,14 @@ Route::get('/doctors', [DoctorController::class, 'doctorList'])->name('doctorLis
 Route::get('/allDoctors', [DoctorController::class, 'allDoctor'])->name('allDoctor');
 Route::get('/doctors/{id}/profile', [DoctorController::class, 'doctorProfile'])->name('doctorProfile');
 Route::get('/drlist', [DoctorController::class, 'dateTime'])->name('dateTime');
-Route::get('/registers', function () {
-    // return "og";
-    return view('auth.doctor_register');
-})->name('doctor_register');
-// middleware([RoleMiddleware::class])->
-// ['middleware'=>'role:admin']
+
+
+// Route::get('/registerss', function () {
+//     return view('auth.doctor_register');
+// })->name('doctor_register');
+
+// Route::get('/registers', [RegisterController::class, 'assign']);
+
 
 Route::group(['prefix' => 'panel', 'middleware' => 'role:admin'], function () {
     Route::get('users', [UserController::class, 'index'])->name('users.index');
@@ -55,6 +59,14 @@ Route::group(['prefix' => 'panel', 'middleware' => 'role:admin'], function () {
         'roles.edit'
     );
     Route::post('roles/{role_id}/edit', [RoleController::class, 'update'])->name('roles.update');
+});
+
+Route::group(['prefix' => 'profile'], function () {
+    Route::get('/user', [UserProfileController::class, 'userProfile'])->name('user.profile');
+    // Route::post('/user', [UserProfileController::class, 'userProfile'])->name('user.profile');
+    Route::get('/doctor', [UserProfileController::class, 'doctorProfile'])->name('doctor.profile');
+    Route::post('/doctor', [UserProfileController::class, 'EditDoctorProfile'])->name('doctor.update');
+    // Route::pos('/doctor', [UserProfileController::class, 'doctorProfile'])->name('doctor.profile');
 });
 
 // Route::prefix('panel')->middleware('role')->group(function () {

@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Role;
 use App\Models\User;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -68,8 +70,18 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'is_doctor' => $data['is_doctor'],
             'password' => Hash::make($data['password']),
         ]);
     }
+    // public function assign()
+    // {
+    //     // return 'ok';
+    //     // $permissions = Permission::all();
+    //     $roles = Role::all();
+    //     $role = Role::select('name')->where('name','doctor')->first();
+    //     // $user->load('roles', 'permissions');
+    //     return view('auth.register', [ 'role' => $role]);
+    // }
 
 }

@@ -17,12 +17,16 @@ class Doctor extends Model
         'profile_img',
         'gender',
         'tell_nu',
-        'address'
+        'address',
     ];
 
     public function speciality()
     {
         return $this->belongsTo(Speciality::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
     public function times()
     {

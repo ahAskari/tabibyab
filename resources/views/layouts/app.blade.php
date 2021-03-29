@@ -19,12 +19,12 @@
         @yield('title')
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        @yield('style')
         <link rel="stylesheet" href="{{ asset('css/footer/footer.css') }}">
-
     </head>
 
     <body>
-        <div id="app">
+        <div id="app" style="position: relative">
             <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" dir="rtl" style="background-color: rgba(201, 250, 235, 0.411) !important; 
   padding: 1px 6rem !important;">
                 <div class="container">
@@ -76,9 +76,18 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @role('admin')
-                                    <a href=""></a>
                                     <a class="dropdown-item text-right" href="{{route('users.index')}}">
                                         {{ __('پنل مدیریت') }}
+                                    </a>
+                                    @endrole
+                                    @role('doctor')
+                                    <a class="dropdown-item text-right" href="{{route('doctor.profile',Auth::user()->id)}}">
+                                        {{ __('پروفایل پزشک') }}
+                                    </a>
+                                    @endrole
+                                    @role('user')
+                                    <a class="dropdown-item text-right" href="{{route('user.profile')}}">
+                                        {{ __('پروفایل') }}
                                     </a>
                                     @endrole
                                     <a class="dropdown-item text-right" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -101,7 +110,8 @@
             </main>
 
             <!-- footer -->
-            <footer class="footer text-right ">
+
+            <footer class="footer text-right" style="position: absolute bottom: 0px">
                 <div class="footer-header d-flex align-items-center text-center container border-bottom text-light">
                     <div class="col-6 text-right pr-5">
                         0917000000000 :پشتیبانی
@@ -136,6 +146,7 @@
                 </div>
             </footer>
         </div>
+
         @yield('script')
     </body>
 

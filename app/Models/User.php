@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Time;
+use App\Models\Doctor;
+use App\Models\Comment;
+use App\Models\Speciality;
 use Illuminate\Notifications\Notifiable;
 use App\Services\Permission\Traits\HasRoles;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -22,6 +26,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_doctor',
+        'speciality_id',
+        'tell_no',
+        'address',
+        'profile_img',
     ];
 
     /**
@@ -42,4 +51,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function speciality()
+    {
+        return $this->belongsTo(Speciality::class);
+    }
+    public function times()
+    {
+        return $this->hasMany(Time::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
