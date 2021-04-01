@@ -67,8 +67,8 @@ Route::group(['prefix' => 'profile'], function () {
     // Route::post('/user', [UserProfileController::class, 'userProfile'])->name('user.profile');
     Route::get('/doctor', [UserProfileController::class, 'doctorProfile'])->name('doctor.profile');
     Route::post('/doctor', [UserProfileController::class, 'EditDoctorProfile'])->name('doctor.update');
-    // Route::pos('/doctor', [UserProfileController::class, 'doctorProfile'])->name('doctor.profile');
 });
+Route::post('/doctor', [UserProfileController::class, 'select_date_time'])->name('doctor.newTime');  
 Route::post('/reserve', [AppointmentController::class, 'reserve'])->middleware('auth')->name('reserve');
 
 // Route::prefix('panel')->middleware('role')->group(function () {

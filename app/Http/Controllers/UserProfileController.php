@@ -8,6 +8,7 @@ use App\Models\Speciality;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class UserProfileController extends Controller
 {
@@ -32,7 +33,7 @@ class UserProfileController extends Controller
         $time = User::find(Auth::user()->id);
         $speciality_list = Speciality::all();
         $appointment = Appointment::where('doctor_id', $doctor->id)->get();
-        
+
         return view('profile.doctor_profile', ['doctor' => $doctor, 'time' => $time, 'speciality' => $speciality, 'profile_img' => $profile_img, 'speciality_list' => $speciality_list, 'appointment' => $appointment]);
     }
     public function EditDoctorProfile(Request $request)
@@ -45,14 +46,34 @@ class UserProfileController extends Controller
             $user->tell_no = $request->tell_no;
             $user->address = $request->address;
             $user->update($request->all());
-
-            // $doctor_date = new Time();
-            // $doctor_date->date = $request->date;
-            // $doctor_date->hour = $request->hour;
-            // $doctor_date->user_id = Auth::user()->id;
-            // $doctor_date->save();
         }
 
         return back()->with('success', true);
     }
-}
+    public function select_date_time(Request $request)
+    {
+            $rules = [
+                'date' => 'required',
+                'hour' => 'required',
+            ];
+            $message = [
+                'date.required' => 'تاریخ و ساعت را انتخاب کنید',
+                'hour.required' => 'ساعت را انتخاب کنید',
+            ];
+            $validator = Validator::make($request->all(), $rules, $message);
+            if ($validator->fails()) {
+                // return back()->withErrors($validator)->withInput();
+                return redirect(route('doctor.profile'))
+                ->withErrors($validator)
+                ->withInput();
+                
+            }
+
+            $doctor_date = new Time();
+            $doctor_date->date = $request->date;
+            $doctor_date->hour = $request->hour;
+            $doctor_date->user_id = Auth::user()->id;
+            $doctor_date->save();
+            return back()->with('success', true);
+        }
+    }

@@ -115,18 +115,29 @@
         right: 15px !important;
         width: max-content;
     }
+    div.error{
+        padding: 0.25rem 0.5rem;
+        margin-top: 0.1rem;
+        font-size: 0.7875rem;
+        line-height: 1.6;
+        color: #fff;
+        background-color: rgba(227, 52, 47, 0.9);
+        border-radius: 0.25rem;
+        width: max-content;
+    }
 </style>
 @endsection
 @section('content')
 
-<form action="{{route('doctor.update')}}" method="POST" style="" class="needs-validation" novalidate>
-    @csrf
-    <div class="container shadow-lg mt-5 p-0 text-right" dir="rtl">
-        @if(session('success'))
-        <div class="alert alert-success p-0 m-0">
-            @lang('users.success')
-        </div>
-        @endif
+<div class="container shadow-lg mt-5 p-0 text-right" dir="rtl">
+    @if(session('success'))
+    <div class="alert alert-success p-0 m-0">
+        @lang('users.success')
+    </div>
+    @endif
+    <form action="{{route('doctor.update')}}" method="POST" enctype="multipart/form-data" class="needs-validation"
+        autocomplete="off" novalidate>
+        @csrf
         {{-- profile image --}}
         <div class="form-group text-center pt-3">
             <label for="profile_img">
@@ -144,8 +155,9 @@
                 لطفا تصویر خود را وارد کنید
             </div>
         </div>
-        <div class="pt-4 px-5 row">
+        <div class="row">
             <div class="personal-info col-lg-6 col-md-12 col-12">
+                {{-- <div class="pt-4 px-5 "> --}}
                 {{-- username --}}
                 <div class="col-12  mb-3" dir="rtl">
                     <label for="name">@lang('profile.name')</label>
@@ -204,19 +216,20 @@
                     </div>
                 </div>
                 {{-- submit --}}
-                <div class="form-group mb-3 mt-5 text-right">
+                <div class="mb-3 mr-3 mt-5 text-right">
                     <button class="btn btn-primary btn shadow" name="submit" id="submit" type="submit">ثبت
                         تغیرات</button>
                 </div>
-            </div>
-</form>
-<form action="" method="post">
-    {{-- date time --}}
-    <div class="date-time col-lg-6 col-md-12 col-12">
-
+    </form>
+</div>
+{{-- date time --}}
+<div class="date-time col-lg-6 col-md-12 col-12">
+    <form action="{{route('doctor.newTime')}}" id="slecet-date-time" class="needs-validation" autocomplete="off"
+        method="post" novalidate>
+        @csrf
         <div class="col-12  mb-3 date-picker">
             <label for="hour" class="label-pdpDefault">ساعت</label>
-            <select id="hour" name="hour" class="hour form-control px-auto" required>
+            <select id="hour" name="hour" class="hour form-control px-auto">
                 <option disabled selected></option>
                 <option value="۸:۰۰">۸:۰۰</option>
                 <option value="۹:۰۰">۹:۰۰</option>
@@ -237,19 +250,24 @@
             <div class="invalid-tooltip">
                 لطفا ساعت کاری خود را انتخاب کنید
             </div>
+            {{-- @error('hour')
+            <div class="error">{{ $message }}</div>
+            @enderror --}}
         </div>
         <div class="col-12  mb-3">
-            <label for=pdpDefault"">تاریخ</label>
-            <input type="text" value="" class="date form-control" placeholder="تاریخ" name="date" id="pdpDefault"
-                required />
+            <label for="pdpDefault" class="d-block">تاریخ</label>
+            <input type="text" value="" class="date form-control" name="date" id="pdpDefault"/>
             <div class="invalid-tooltip">
                 لطفا تاریخ حضور در مطب راانتخاب کنید
             </div>
+            @error('date')
+            <div class="error">{{ $message }}</div>
+            @enderror
         </div>
 
-        <a href="" class="btn btn-sm btn-success">افزودن</a>
+        <button type="submit" class="btn btn-sm btn-success">افزودن</button>
         <div class="form-group d-flex text-right" style="margin-bottom: 19rem">
-            <div class="form-group work-list">
+            <div class="form-group work-list mt-5">
                 @foreach ($time->times as $item)
                 <a href="" class="getAppointment shadow btn btn-sm m-2" data-toggle="modal"
                     data-target="#appointmentModal">{{$item->date}} - ساعت :
@@ -257,9 +275,9 @@
                 @endforeach
             </div>
         </div>
-    </div>
-    </div>
-</form>
+    </form>
+</div>
+</div>
 
 {{-- appointment-list --}}
 <div>
@@ -319,11 +337,23 @@
     // e.preventDefault();
     // return false;
     // });
-    $(function(){
-        // $.ajax({
-        //     url: '',
+    // $(function(){
+        // $("#slecet-date-time").on('change', function(){
+        //     var formatDate = new FormData();
+        //     $.ajax({
+        //         url: '{{route('doctor.newTime')}}',
+        //         data: formData,
+        //         _token: '{{ csrf_token() }}',
+        //         success: function (response) {
+        //         console.log(response);
+        //         },
+        //         error: function () {
+        //         swal("error on server side");
+        //         }
+        //     });
+
         // });
-    });
+    // });
 
     // date picker
     $(function(){
