@@ -60,13 +60,13 @@ section.profile .form-group .dateTimePicker {
 section.profile .form-group .dateTimePicker .dateTime {
   width: 100%;
 }
-section.profile a.getAppointment {
+section.profile .getAppointment {
   font-size: 16px !important;
   font-weight: 600;
   color: #ffffff;
   background-color: #328597 !important;
 }
-section.profile a.getAppointment:hover {
+section.profile .getAppointment:hover {
   background-color: #0cb0d4 !important;
 }
 section.profile td {
@@ -78,6 +78,9 @@ section.profile tr th {
 section.profile .timepicker {
   max-width: 100px;
   border-radius: 0;
+}
+section.profile .date-time-hide, section.profile .fa_user_doctor_time {
+  display: none;
 }
 section.profile #appointmentModal .modal-title {
   text-align: center;

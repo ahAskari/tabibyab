@@ -20,6 +20,7 @@
 .pdp-default {
     position: absolute;    
     direction: rtl;    
+    left: 121px !important;
     /* color: #555; */
     border: none !important;
     border-radius: 16px;
@@ -49,7 +50,7 @@
 
 .pdp-default .pdp-header{
     background-color: #ffffff;
-    box-shadow: 1px 1px 8px 1px rgba(236, 68, 68, 0.19);
+    box-shadow: 1px 1px 8px 1px rgba(68, 127, 236, 0.19);
     /* border-top: 1px solid #999;
     border-left: 1px solid #999;
     border-right: 1px solid #999; */

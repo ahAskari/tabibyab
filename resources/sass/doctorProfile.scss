@@ -64,7 +64,7 @@ section.profile {
       }
     }
   }
-  a.getAppointment {
+  .getAppointment {
     font-size: 16px !important;
     font-weight: 600;
     color: #ffffff;
@@ -84,6 +84,9 @@ section.profile {
   .timepicker {
     max-width: 100px;
     border-radius: 0;
+  }
+  .date-time-hide, .fa_user_doctor_time{
+    display: none;
   }
   #appointmentModal {
     .modal-title {

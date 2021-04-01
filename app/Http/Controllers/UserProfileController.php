@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Speciality;
 use App\Models\Time;
 use App\Models\User;
+use App\Models\Speciality;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,7 +31,9 @@ class UserProfileController extends Controller
         $speciality = User::find(Auth::user()->id)->speciality;
         $time = User::find(Auth::user()->id);
         $speciality_list = Speciality::all();
-        return view('profile.doctor_profile', ['doctor' => $doctor, 'time' => $time, 'speciality' => $speciality, 'profile_img' => $profile_img, 'speciality_list' => $speciality_list]);
+        $appointment = Appointment::where('doctor_id', $doctor->id)->get();
+        
+        return view('profile.doctor_profile', ['doctor' => $doctor, 'time' => $time, 'speciality' => $speciality, 'profile_img' => $profile_img, 'speciality_list' => $speciality_list, 'appointment' => $appointment]);
     }
     public function EditDoctorProfile(Request $request)
     {
@@ -49,16 +52,6 @@ class UserProfileController extends Controller
             // $doctor_date->user_id = Auth::user()->id;
             // $doctor_date->save();
         }
-
-        // if ($request->has('submit')) {
-        //     $user = Auth::user();
-        //     $user->profile_img = $request->profile_img;
-        //     $user->name = $request->name;
-        //     $user->speciality_id = $request->speciality_id;
-        //     $user->tell_no = $request->tell_no;
-        //     $user->address = $request->address;
-        //     $user->update($request->all());
-        // }
 
         return back()->with('success', true);
     }

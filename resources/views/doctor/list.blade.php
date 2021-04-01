@@ -28,8 +28,13 @@
             <div class="flip-card ">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <img src="{{ asset('/images') }}/{{$item->profile_img}}" alt="Avatar" class="imgAvatar
-                        col">
+                        @if (empty($item->profile_img))
+                        <img src="{{asset('images/avatar/MaleDr.png')}}" id="imgAvatar"
+                            class="form-group shadow imgAvatar" alt="تصویر پروفایل">
+                        @else
+                        <img src="{{asset('images/')}}/{{$item->profile_img}}" id="imgAvatar"
+                            class="form-group shadow imgAvatar" alt="تصویر پروفایل">
+                        @endif
                     </div>
                     <div class="flip-card-back bg-info d-flex align-items-center justify-content-center">
                         <a href="{{route('doctorProfile',$item->id)}}" class="nameAvatar m-0 ">پروفایل</a>
@@ -39,7 +44,7 @@
         </div>
     </div>
     @endforeach
-    
+
 
     @else
 
@@ -53,7 +58,7 @@
                 </div>
                 <p class="speciality text-secondary mt-3 pr-4 mb-0" id="speciality">
                     {{$doctor->speciality->title}}
-                    
+
                 </p>
                 <div class="d-flex justify-content-end">
                     <p class="text-secondary address" id="address">{{$doctor->address}}
@@ -68,8 +73,13 @@
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <img src="{{ asset('/images') }}/{{$doctor->profile_img}}" alt="Avatar" class="imgAvatar
-                        col">
+                        @if (empty($doctor->profile_img))
+                        <img src="{{asset('images/avatar/MaleDr.png')}}" id="imgAvatar"
+                            class="form-group shadow imgAvatar" alt="تصویر پروفایل">
+                        @else
+                        <img src="{{asset('images/')}}/{{$doctor->profile_img}}" id="imgAvatar"
+                            class="form-group shadow imgAvatar" alt="تصویر پروفایل">
+                        @endif
                     </div>
                     <div class="flip-card-back bg-info d-flex align-items-center justify-content-center">
                         <a href="{{route('doctorProfile',$doctor->id)}}" class="nameAvatar m-0 ">پروفایل</a>
@@ -83,16 +93,16 @@
     </div>
     @endforeach
 
-    @foreach ($times as $time) 
+    @foreach ($times as $time)
     {{$time->date }}
     {{$time->hour }}
-    
+
     @endforeach
     @endif
     {{-- <div class="row mx-auto justify-center">
         {{ $user_doctor->links() }}
     </div> --}}
-    
+
     <div>
     </div>
 </section>

@@ -2,7 +2,6 @@
 
 return [
 	'manage users' => 'سیستم مدیریت کاربران',
-	'practical laravel' => 'دوره لاراول کاربردی ',
 	'main page' => 'صفحه اصلی',
 	'list' => 'لیست کاربران',
 	'there are not any user' => 'کاربری در سیستم وجود ندارد',
@@ -15,7 +14,7 @@ return [
 	'add permission to user' => 'افزودن دسترسی به کاربر',
 	'add role to user' => 'افزودن نقش به کاربر',
 	'update' => 'ویرایش',
-	'success' => 'عملیات با موفقیت انجام شد.',
+	'success' => 'عملیات با موفقیت انجام شد',
 	'show roles' => 'لیست نقش ها',
 	'show permissions' => 'لیست دسترسی ها',
 	'show users' => 'لیست کاربران',

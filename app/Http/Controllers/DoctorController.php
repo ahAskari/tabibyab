@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Day;
 use App\Models\Hour;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Day_hour;
 use App\Models\Speciality;
+use App\Models\Time;
 use PhpParser\Comment\Doc;
 use Illuminate\Http\Request;
 
@@ -56,7 +58,7 @@ class DoctorController extends Controller
     {
         $doctor = User::find($id);
         $speciality = User::find($id)->speciality;
-        $time = User::find($id);
+        $time = User::find($id);        
         $comment = User::find($id);
         return view('doctor.profile', ['doctor' => $doctor, 'speciality' => $speciality, 'time' => $time, 'comment' => $comment]);
     }

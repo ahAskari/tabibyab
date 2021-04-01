@@ -4,6 +4,7 @@ use App\Models\Day;
 use App\Models\Role;
 use App\Models\Doctor;
 use App\Http\Controllers;
+use App\Http\Controllers\AppointmentController;
 use Illuminate\Routing\Controller;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
@@ -68,6 +69,7 @@ Route::group(['prefix' => 'profile'], function () {
     Route::post('/doctor', [UserProfileController::class, 'EditDoctorProfile'])->name('doctor.update');
     // Route::pos('/doctor', [UserProfileController::class, 'doctorProfile'])->name('doctor.profile');
 });
+Route::post('/reserve', [AppointmentController::class, 'reserve'])->middleware('auth')->name('reserve');
 
 // Route::prefix('panel')->middleware('role')->group(function () {
 //     Route::get('users', [UserController::class, 'index'])->name('users.index');
