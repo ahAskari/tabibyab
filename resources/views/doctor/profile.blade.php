@@ -12,9 +12,11 @@
         @endif
         <div class="border-bottom  mb-2 text-center ">
             @if (empty($doctor->profile_img))
-            <img src="{{asset('images/avatar/MaleDr.png')}}" id="imgAvatar" class="form-group shadow imgAvatar" alt="تصویر پروفایل">
+            <img src="{{asset('images/avatar/MaleDr.png')}}" id="imgAvatar" class="form-group shadow imgAvatar"
+                alt="تصویر پروفایل">
             @else
-            <img src="{{asset('images/')}}/{{$doctor->profile_img}}" id="imgAvatar" class="form-group shadow imgAvatar" alt="تصویر پروفایل">
+            <img src="{{asset('images/')}}/{{$doctor->profile_img}}" id="imgAvatar" class="form-group shadow imgAvatar"
+                alt="تصویر پروفایل">
             @endif
             <p class="name border-bottom  pt-2 d-inline" id="name">{{$doctor->name}}</p>
             <p class="speciality mt-3 pr-4 mb-0 " id="speciality">{{$speciality->title}} </p>
@@ -48,17 +50,15 @@
                 @csrf
                 <div class="fa_user_doctor_time bg-info">
                     <input name="doctor_id" id="doctor_id" value="{{$doctor->id}}">
-                    <input name="fa_user" id="doctor_id" value="{{Auth::user()->name}}">
-                    <input name="fa_doctor" id="doctor_id" value="{{$doctor->name}}">
-                    
+                    <input name="fa_doctor" id="fa_doctor" value="{{$doctor->name}}">
                     @if (Auth::user())
                     <input name="user_id" id="user_id" value="{{Auth::user()->id}}">
+                    <input name="fa_user" id="fa_user" value="{{Auth::user()->name}}">
                     @endif
                 </div>
-                @foreach ($time->times as $item)
+                @forelse ($time->times as $item)
                 {{-- data-toggle="modal" data-target="#appointmentModal" --}}
                 {{-- <input type="radio" name="time_id" id="time_id" value="{{ $item->id }}" > --}}
-                {{-- @if (Auth::check()) --}}
                 <div class="date-time-hide">
                     <input type="text" name="fa_time" value="{{ $item->id }}">
                     <input type="text" name="fa_time" value="{{ $item->date }}">
@@ -67,7 +67,9 @@
                 </div>
                 <button class="getAppointment btn  m-2" name="time_id" id="" value="{{ $item->id }}"
                     type="submit">{{$item->date}} - ساعت : {{$item->hour}}</button>
-                @endforeach
+                @empty
+                <div class="alert alert-success">هیج نوبتی ثبت نشده است</div>
+                @endforelse
         </div>
         <!-- Modal -->
         <div class="modal fade " id="appointmentModal" tabindex="-1" role="dialog"
@@ -101,24 +103,34 @@
 
 <!-- comment user -->
 <div class=" container " dir="rtl">
-    <form class="form  pt-5 col-12 col-lg-6 col-md-12">
-        <div class="input-group text-right " style="margin: 0 !important">
-            <!-- <label for="inputComment" class="shadow label-input">نظر بیماران</label> -->
-            <label for="inputComment" class="shadow-sm">نظرات کاربران</label>
-            <input type="text" class="form-control border-bottom input text-right shadow" name="inputComment"
-                id="inputComment" placeholder="لطفا نظر خود را وارد کنید">
-            <button type="submit" class="addComment d-none btn-success btn-input ">
-                <i class="fas fa-plus-circle"></i>
-            </button>
+    <form method="POST" action="{{route('add-comment')}}"
+        class="comment form pt-5 col-12 col-lg-6 col-md-12 needs-validation" novalidate>
+        @csrf
+        <label for="content" class="shadow-sm">نظرات کاربران</label>
+        <!-- <label for="inputComment" class="shadow label-input">نظر بیماران</label> -->
+        <div class="d-none">
+            @if (Auth::user())
+            <input name="user_id" id="user_id" class="d-none" value="{{Auth::user()->id}}">
+            @endif
+            <input name="doctor_id" id="doctor_id" value="{{$doctor->id}}">
         </div>
+        <textarea name="content" id="content" cols="15" rows="5" class="form-control text-right shadow"
+            placeholder="لطفا نظر خود را وارد کنید" required></textarea>
+        <div class="invalid-tooltip mr-3">
+            لطفا نظر خود را وارد کنید
+        </div>
+        @if (Auth::user()->id == request()->id or empty($userCheck) )
+        @else
+        <button type="submit" class="btn-success btn">ثبت</button>
+        @endif
     </form>
     <div class="list-container col-12 col-lg-12 col-md-12">
         <ul class="todo-list col-6 ">
-            <div class="shadow ml-auto ">
-                @foreach ($comment->comments as $item)
+            <div class="shadow ml-auto">
+                @foreach ($comments as $comment)
                 <div class="form-group border-bottom rounded mb-2 col-12 text-right" style="width: 100%;">
-                    <p class="userName py-2 " id="userName">username</p>
-                    <p class="text-secondary">{{$item->content}}</p>
+                    <p class="userName py-2 " id="userName">{{$comment->user->name}}</p>
+                    <p class="text-secondary">{{$comment->content}}</p>
                 </div>
                 @endforeach
                 {{-- <div class="form-group border-bottom col-12 rounded text-right" style="width: 100%;">
@@ -139,5 +151,24 @@
 
 @endsection
 @section('script')
-
+<script>
+    // validation
+    (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+    form.addEventListener('submit', function(event) {
+    if (form.checkValidity() === false) {
+    event.preventDefault();
+    event.stopPropagation();
+    }
+    form.classList.add('was-validated');
+    }, false);
+    });
+    }, false);
+    })();
+</script>
 @endsection

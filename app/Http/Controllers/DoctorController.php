@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Comment;
 use App\Models\Day;
 use App\Models\Hour;
 use App\Models\User;
@@ -10,6 +11,7 @@ use App\Models\Doctor;
 use App\Models\Day_hour;
 use App\Models\Speciality;
 use App\Models\Time;
+use Auth;
 use PhpParser\Comment\Doc;
 use Illuminate\Http\Request;
 
@@ -28,21 +30,22 @@ class DoctorController extends Controller
         $id = $request->get('specialyList');
         // go to speciality and check id if equal to speciality_id in doctor table retun this (doctor)
         $speciality = Speciality::find($id);
-        $user_doctor = User::where('is_doctor', 'true')->where('speciality_id', $id)->paginate(2);
+        $user_doctor = User::where('is_doctor', 'true')->where('speciality_id', $id)->paginate(4);
         return view('doctor.list', ['speciality' => $speciality, 'user_doctor' => $user_doctor]);
     }
 
     // show doctor list
     public function allDoctor(Request $request)
     {
-        // $doctors = User::paginate();
         $doctors = User::where('speciality_id', '!=' ,'null')->paginate(4);
+        return view('doctor.list', ['doctors' => $doctors]);
+        // $doctors = User::paginate();
         // foreach($doctors as $doctor){
         //     return $doctor->date_time_id;
 
         // }
 
-        $times = User::find(6)->times;
+        // $times = User::find(6)->times;
         // return $time->date_time_id;
         // $time = User::find(1);
         // foreach ($time->times as $item){
@@ -50,7 +53,6 @@ class DoctorController extends Controller
 
         // }
         // $doctors = User::where('is_doctor', 'true')->get();
-        return view('doctor.list', ['doctors' => $doctors, 'times' => $times]);
     }
 
     // Show doctor information in profile
@@ -59,8 +61,15 @@ class DoctorController extends Controller
         $doctor = User::find($id);
         $speciality = User::find($id)->speciality;
         $time = User::find($id);        
-        $comment = User::find($id);
-        return view('doctor.profile', ['doctor' => $doctor, 'speciality' => $speciality, 'time' => $time, 'comment' => $comment]);
+        $comments = Comment::where('doctor_id',$id)->get();
+        $userCheck = Appointment::where('doctor_id', $id)->where('user_id',Auth::user()->id)->first();
+        // if(empty($userCheck)){
+        //     return 'تا به حال با این پزشکی نوبتی نداشته اید';
+        // }
+        // else{
+        //     return $userCheck;
+        // }
+        return view('doctor.profile', ['doctor' => $doctor, 'speciality' => $speciality, 'time' => $time, 'comments' => $comments, 'userCheck' => $userCheck]);
     }
 
     // get date and time doctors

@@ -93,15 +93,16 @@
     </div>
     @endforeach
 
-    @foreach ($times as $time)
+    {{-- @foreach ($times as $time)
     {{$time->date }}
     {{$time->hour }}
 
-    @endforeach
+    @endforeach --}}
+    <div class="row mx-auto justify-center">
+        {{ $doctors->links() }}
+    </div>
     @endif
-    {{-- <div class="row mx-auto justify-center">
-        {{ $user_doctor->links() }}
-    </div> --}}
+    
 
     <div>
     </div>

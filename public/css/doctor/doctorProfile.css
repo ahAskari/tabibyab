@@ -87,60 +87,21 @@ section.profile #appointmentModal .modal-title {
   color: red;
   font-weight: 600;
 }
-.container form {
-  width: 100%;
-  margin-right: 0 auto;
-}
-.container form div.input-group {
-  position: relative;
-  display: block;
-}
-.container form div.input-group label.label-input {
+.container form.comment label {
   display: block !important;
-  width: 19% !important;
   padding: 0 10px;
-  color: #fff;
-  text-transform: uppercase;
   font-weight: 900;
+  text-align: right;
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
 }
-.container form div.input-group input {
-  border: none;
-  width: 100%;
-  border-radius: 15px !important;
-  padding: 10px;
-  z-index: 1;
-  color: #700d21;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-}
-.container form div.input-group input::-moz-placeholder {
-  color: #700d21;
-}
-.container form div.input-group input:-ms-input-placeholder {
-  color: #700d21;
-}
-.container form div.input-group input::placeholder {
-  color: #700d21;
-}
-.container form div.input-group input:focus {
-  z-index: 1;
-  outline: none !important;
-  box-shadow: none;
-}
-.container form div.input-group .addComment {
-  position: absolute;
-  left: 0;
-  top: 45%;
-  width: 38px;
-  height: 38px;
-  border-radius: 50px;
-  z-index: 2;
-  margin-right: auto !important;
-}
-.container form div.input-group .addComment:focus {
-  outline: none !important;
-  border: none !important;
+.container form.comment div.invalid-tooltip {
+  right: 0 !important;
+  top: 208px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .userName {

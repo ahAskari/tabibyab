@@ -17,6 +17,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\DoctorsListController;
 use App\Http\Controllers\UserProfileController;
@@ -70,7 +71,7 @@ Route::group(['prefix' => 'profile'], function () {
 });
 Route::post('/doctor', [UserProfileController::class, 'select_date_time'])->name('doctor.newTime');  
 Route::post('/reserve', [AppointmentController::class, 'reserve'])->middleware('auth')->name('reserve');
-
+Route::post('/addCommetnt',[CommentController::class, 'insert'])->middleware('auth')->name('add-comment');
 // Route::prefix('panel')->middleware('role')->group(function () {
 //     Route::get('users', [UserController::class, 'index'])->name('users.index');
 //     Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');

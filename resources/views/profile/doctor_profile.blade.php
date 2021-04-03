@@ -224,8 +224,8 @@
 </div>
 {{-- date time --}}
 <div class="date-time col-lg-6 col-md-12 col-12">
-    <form action="{{route('doctor.newTime')}}" id="slecet-date-time" class="needs-validation" autocomplete="off"
-        method="post" novalidate>
+    <form action="{{route('doctor.newTime')}}" id="slecet-date-time" autocomplete="off"
+        method="post">
         @csrf
         <div class="col-12  mb-3 date-picker">
             <label for="hour" class="label-pdpDefault">ساعت</label>
@@ -247,9 +247,9 @@
                 <option value="۲۱:۰۰">۲۱:۰۰</option>
                 <option value="۲۲:۰۰">۲۲:۰۰</option>
             </select>
-            <div class="invalid-tooltip">
+            {{-- <div class="invalid-tooltip">
                 لطفا ساعت کاری خود را انتخاب کنید
-            </div>
+            </div> --}}
             {{-- @error('hour')
             <div class="error">{{ $message }}</div>
             @enderror --}}
@@ -257,9 +257,9 @@
         <div class="col-12  mb-3">
             <label for="pdpDefault" class="d-block">تاریخ</label>
             <input type="text" value="" class="date form-control" name="date" id="pdpDefault"/>
-            <div class="invalid-tooltip">
+            {{-- <div class="invalid-tooltip">
                 لطفا تاریخ حضور در مطب راانتخاب کنید
-            </div>
+            </div> --}}
             @error('date')
             <div class="error">{{ $message }}</div>
             @enderror
