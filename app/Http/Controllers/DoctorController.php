@@ -37,22 +37,8 @@ class DoctorController extends Controller
     // show doctor list
     public function allDoctor(Request $request)
     {
-        $doctors = User::where('speciality_id', '!=' ,'null')->paginate(4);
+        $doctors = User::where('speciality_id', '!=', 'null')->paginate(4);
         return view('doctor.list', ['doctors' => $doctors]);
-        // $doctors = User::paginate();
-        // foreach($doctors as $doctor){
-        //     return $doctor->date_time_id;
-
-        // }
-
-        // $times = User::find(6)->times;
-        // return $time->date_time_id;
-        // $time = User::find(1);
-        // foreach ($time->times as $item){
-        //     return $item->hour;
-
-        // }
-        // $doctors = User::where('is_doctor', 'true')->get();
     }
 
     // Show doctor information in profile
@@ -60,29 +46,26 @@ class DoctorController extends Controller
     {
         $doctor = User::find($id);
         $speciality = User::find($id)->speciality;
-        $time = User::find($id);        
-        $comments = Comment::where('doctor_id',$id)->get();
-        $userCheck = Appointment::where('doctor_id', $id)->where('user_id',Auth::user()->id)->first();
-        // if(empty($userCheck)){
-        //     return 'تا به حال با این پزشکی نوبتی نداشته اید';
-        // }
-        // else{
-        //     return $userCheck;
-        // }
-        return view('doctor.profile', ['doctor' => $doctor, 'speciality' => $speciality, 'time' => $time, 'comments' => $comments, 'userCheck' => $userCheck]);
+        $time = User::find($id);
+        $comments = Comment::where('doctor_id', $id)->get();
+        if (Auth::user()) {
+            $userCheck = Appointment::where('doctor_id', $id)->where('user_id', Auth::user()->id)->first();
+            return view('doctor.profile', ['doctor' => $doctor, 'speciality' => $speciality, 'time' => $time, 'comments' => $comments, 'userCheck' => $userCheck]);
+        }
+        return view('doctor.profile', ['doctor' => $doctor, 'speciality' => $speciality, 'time' => $time, 'comments' => $comments]);
     }
 
     // get date and time doctors
-    public function dateTime(Request $request, $id)
-    {
-        // $day_hour= Day_hour::where('doctor_id',$id)->first();
-        // foreach($day_hour as $day_hour){
-        //     print $day_hour->day_id;
-        // }
-        // $day = Day::where('id', $day_hour->day_id)->get();
-        // return $day;
-        // foreach($day as $day){
+    // public function dateTime(Request $request, $id)
+    // {
+    // $day_hour= Day_hour::where('doctor_id',$id)->first();
+    // foreach($day_hour as $day_hour){
+    //     print $day_hour->day_id;
+    // }
+    // $day = Day::where('id', $day_hour->day_id)->get();
+    // return $day;
+    // foreach($day as $day){
 
-        // }
-    }
+    // }
+    // }
 }

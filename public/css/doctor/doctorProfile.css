@@ -87,6 +87,7 @@ section.profile #appointmentModal .modal-title {
   color: red;
   font-weight: 600;
 }
+
 .container form.comment label {
   display: block !important;
   padding: 0 10px;
@@ -109,52 +110,16 @@ section.profile #appointmentModal .modal-title {
   font-weight: 700;
 }
 
-.list-container {
-  margin-right: 0 !important;
+.all-comment label {
+  display: block;
+  text-align: right;
 }
-.list-container ul.todo-list {
-  margin-right: 0 !important;
-  width: 60%;
-  margin: 4rem auto;
-}
-.list-container ul.todo-list li.todo {
-  width: 80%;
-  height: 45px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background: #faeef6;
-  padding: 1rem;
-  transition: all 0.5s ease-in-out;
-}
-.list-container ul.todo-list li.todo div {
-  align-content: center;
-  align-items: center;
-  position: relative;
-}
-.list-container ul.todo-list li.todo div input#complete {
-  -wevkit-appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-          appearance: none;
-  border: 2px solid red;
-  width: 20px;
-  height: 20px;
-}
-.list-container ul.todo-list li.todo div button {
-  color: #d6ee00;
-  background: #f1faee;
-  border: none;
-  position: absolute;
-  right: 1rem;
-  top: -10px !important;
-}
-.list-container ul.todo-list li.todo div button:focus {
-  outline: none !important;
-}
-.list-container ul.todo-list li.todo div button:hover {
-  opacity: 80%;
+.all-comment div.comment-body {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  max-height: 189px;
+  overflow: auto;
 }
 
 .fade-in {

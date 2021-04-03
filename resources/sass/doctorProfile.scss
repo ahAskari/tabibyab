@@ -95,8 +95,6 @@ section.profile {
       font-weight: 600;
     }
   }
-  .appointmentModal {
-  }
 }
 //==================================================================================================
 // comment
@@ -128,54 +126,15 @@ section.profile {
   font-weight: 700;
   
 }
-.list-container {
-  margin-right: 0 !important;
-  ul.todo-list {
-     margin-right: 0 !important;
-    width: 60%;
-    margin: 4rem auto;
-    li.todo {
-      width: 80%;
-      height: 45px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      background: #faeef6;
-      padding: 1rem;
-      // border-radius: 16px;
-      // opacity: 0;
-      transition: all 0.5s ease-in-out;
-
-      div {
-        align-content: center;
-        align-items: center;
-        position: relative;
-        input#complete {
-          -wevkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          border: 2px solid red;
-          width: 20px;
-          height: 20px;
-        }
-        button {
-          color: rgb(214, 238, 0);
-          background: #f1faee;
-          border: none;
-          position: absolute;
-          right: 1rem;
-          top: -10px !important;
-          &:focus {
-            outline: none !important;
-            // border: none !important;
-          }
-          &:hover {
-            opacity: 80%;
-          }
-        }
-      }
-    }
+.all-comment{
+  label{
+    display: block;
+    text-align: right;
+  }
+  div.comment-body{
+    height: max-content;
+    max-height: 189px;
+    overflow: auto;
   }
 }
 .fade-in {

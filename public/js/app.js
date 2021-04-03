@@ -366,6 +366,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 
 /***/ }),
 
+/***/ "./resources/sass/user_profile_doctor.scss":
+/*!*************************************************!*\
+  !*** ./resources/sass/user_profile_doctor.scss ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvc2Fzcy91c2VyX3Byb2ZpbGVfZG9jdG9yLnNjc3M/YTRiMyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEiLCJmaWxlIjoiLi9yZXNvdXJjZXMvc2Fzcy91c2VyX3Byb2ZpbGVfZG9jdG9yLnNjc3MuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBleHRyYWN0ZWQgYnkgbWluaS1jc3MtZXh0cmFjdC1wbHVnaW5cbmV4cG9ydCB7fTsiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/sass/user_profile_doctor.scss\n");
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -544,7 +555,8 @@ eval("// shim for using process in browser\nvar process = module.exports = {};\n
 /******/ 			["./resources/sass/doctorList.scss"],
 /******/ 			["./resources/sass/doctorProfile.scss"],
 /******/ 			["./resources/sass/footer.scss"],
-/******/ 			["./resources/sass/index.scss"]
+/******/ 			["./resources/sass/index.scss"],
+/******/ 			["./resources/sass/user_profile_doctor.scss"]
 /******/ 		];
 /******/ 		// no chunk on demand loading
 /******/ 		

@@ -1,0 +1,122 @@
+img.imgAvatar {
+  width: 140px;
+  border-radius: 50%;
+  height: 140px !important;
+}
+
+input,
+textarea#address,
+select {
+  display: block !important;
+  width: 70% !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(44, 66, 80, 0.24) !important;
+  background-color: #f8fafc !important;
+  border: none;
+  overflow: auto;
+  outline: none;
+  box-shadow: none;
+  resize: none;
+}
+
+input:focus,
+textarea#address,
+select {
+  border: none !important;
+  outline: none !important;
+  border-bottom: 1px solid rgba(44, 66, 80, 0.24) !important;
+  box-shadow: none !important;
+}
+
+input.date,
+select.hour {
+  display: inline !important;
+  width: 200px !important;
+}
+
+label.label-pdpDefault {
+  display: block !important;
+}
+
+input.profile_img {
+  display: none !important;
+}
+
+textarea.address {
+  /* border-radius: 5px !important; */
+}
+
+a.getAppointment {
+  background-color: #005aff26;
+}
+
+a.appointment-list-btn {
+  background-color: #0059ff54;
+}
+
+div.appointment-list {
+  width: 500px;
+  margin-right: 3rem;
+  overflow: auto;
+  height: 200px;
+}
+
+div.work-list {
+  direction: ltr;
+  width: 260px;
+  height: 150px;
+  overflow: auto;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+div.work-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+div.work-list {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+div.container {
+  /* position: relative; */
+}
+
+div.alert {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  position: absolute;
+  top: -25px;
+}
+
+div.date-time {
+  margin-left: 0 !important;
+}
+
+div.date-picker {
+  margin-bottom: 90px;
+}
+
+div.invalid-tooltip {
+  right: 15px !important;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+div.error {
+  padding: 0.25rem 0.5rem;
+  margin-top: 0.1rem;
+  font-size: 0.7875rem;
+  line-height: 1.6;
+  color: #fff;
+  background-color: rgba(227, 52, 47, 0.9);
+  border-radius: 0.25rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
