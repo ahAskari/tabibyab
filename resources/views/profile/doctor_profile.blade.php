@@ -2,14 +2,12 @@
 @section('links')
 <link rel="stylesheet" href="{{ asset ('css/datepicker/datepicker.css')}}">
 <link rel="stylesheet" href="{{ asset ('css/datepicker/persianDatepicker-default.css')}}" />
-{{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> --}}
+<link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.css" />
 @endsection
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/profile/user_profile_doctor.css') }}">
 @endsection
 @section('content')
-
 <div class="container shadow-lg mt-5 p-0 text-right" dir="rtl">
     @if(session('success'))
     <div class="alert alert-success p-0 m-0">
@@ -95,9 +93,18 @@
                     <div class="invalid-tooltip">
                         لطفا آدرس خود را وارد کنید
                     </div>
+                    <div id="map"></div>
+                    <div class="" id="latLng">
+                        <input type="hidden" id="lat" name="lat" required>
+                        <input type="hidden" id="lng" name="lng" required>
+                    </div>
+                    <div class="invalid-tooltip" id="validation-map">
+                        لطفا آدرس مطب خود را روی نقشه انتخاب کنید
+                    </div>
                 </div>
                 {{-- submit --}}
                 <div class="mb-3 mr-3 mt-5 text-right">
+
                     <button class="btn btn-primary btn shadow" name="submit" id="submit" type="submit">ثبت
                         تغیرات</button>
                 </div>
@@ -105,8 +112,7 @@
 </div>
 {{-- date time --}}
 <div class="date-time col-lg-6 col-md-12 col-12">
-    <form action="{{route('doctor.newTime')}}" id="slecet-date-time" autocomplete="off"
-        method="post">
+    <form action="{{route('doctor.newTime')}}" id="slecet-date-time" autocomplete="off" method="post">
         @csrf
         <div class="col-12  mb-3 date-picker">
             <label for="hour" class="label-pdpDefault">ساعت</label>
@@ -133,30 +139,30 @@
             </div> --}}
             {{-- @error('hour')
             <div class="error">{{ $message }}</div>
-            @enderror --}}
-        </div>
-        <div class="col-12  mb-3">
-            <label for="pdpDefault" class="d-block">تاریخ</label>
-            <input type="text" value="" class="date form-control" name="date" id="pdpDefault"/>
-            {{-- <div class="invalid-tooltip">
+        @enderror --}}
+</div>
+<div class="col-12  mb-3">
+    <label for="pdpDefault" class="d-block">تاریخ</label>
+    <input type="text" value="" class="date form-control" name="date" id="pdpDefault" />
+    {{-- <div class="invalid-tooltip">
                 لطفا تاریخ حضور در مطب راانتخاب کنید
             </div> --}}
-            @error('date')
-            <div class="error">{{ $message }}</div>
-            @enderror
-        </div>
+    @error('date')
+    <div class="error">{{ $message }}</div>
+    @enderror
+</div>
 
-        <button type="submit" class="btn btn-sm btn-success">افزودن</button>
-        <div class="form-group d-flex text-right" style="margin-bottom: 19rem">
-            <div class="form-group work-list mt-5">
-                @foreach ($time->times as $item)
-                <a href="" class="getAppointment shadow btn btn-sm m-2" data-toggle="modal"
-                    data-target="#appointmentModal">{{$item->date}} - ساعت :
-                    {{$item->hour}}</a>
-                @endforeach
-            </div>
-        </div>
-    </form>
+<button type="submit" class="btn btn-sm btn-success">افزودن</button>
+<div class="form-group d-flex text-right" style="margin-bottom: 19rem">
+    <div class="form-group work-list mt-5">
+        @foreach ($time->times as $item)
+        <a href="" class="getAppointment shadow btn btn-sm m-2" data-toggle="modal"
+            data-target="#appointmentModal">{{$item->date}} - ساعت :
+            {{$item->hour}}</a>
+        @endforeach
+    </div>
+</div>
+</form>
 </div>
 </div>
 
@@ -187,20 +193,11 @@
 </div>
 
 </div>
-
-
-{{-- <input type="submit" value="ثبت" name="time" id="time" class="btn btn-success"> --}}
-{{-- <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btnradio2">صبح</label>
-                    
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btnradio3">عصر</label>
-                    </div> --}}
 @endsection
 {{-- ========================================================================== --}}
 @section('script')
+<script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.js">
+</script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"
     integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous">
 </script>
@@ -210,10 +207,12 @@
 <script src="{{ asset ('js/datepicker/persianDatepicker.js')}}" defer></script>
 
 <script>
+    //=========================================================================================
     $(document).on("keypress", "#pdpDefault", function (e) {
     e.preventDefault();
     return false;
     });
+//=========================================================================================
     // document.getElementById('pdpDefault').keypress(function(e){
     // e.preventDefault();
     // return false;
@@ -235,7 +234,7 @@
 
         // });
     // });
-
+//=========================================================================================
     // date picker
     $(function(){
         //usage
@@ -251,7 +250,7 @@
             formatDate: "ND/DD/NM",
             });
     });
-
+//=========================================================================================
     // profile image
     function previewFile() {
         var preview = document.getElementById('imgAvatar');
@@ -263,7 +262,8 @@
         if (file) {
         reader.readAsDataURL(file);
         };    
-    }   
+    }
+//=========================================================================================   
     // tell no
     $("#tell_no").keypress(function (e) {
     if (String.fromCharCode(e.which).match(/[^+0-9_]/)) {
@@ -271,15 +271,66 @@
     }
     });
 
+//=========================================================================================
+// map
+    let inputLat = document.getElementById('lat');
+    let inputLng = document.getElementById('lng');
+    let marker;
+
+    @if(empty($doctor->lat && $doctor->lng))
+    let lat = 29.6314088582;
+    let lng = 52.519905567;
+    @else
+    let lat = {{$doctor->lat}};
+    let lng = {{$doctor->lng}};
+    inputLat.setAttribute('value', lat);
+    inputLng.setAttribute('value', lng);
+    @endif
+    
+    let map = L.map('map').setView([lat, lng], 14);
+    mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; ' + mapLink + 'Contributors', maxZoom: 18,
+    }).addTo(map);
+    @if(empty($doctor->lat && $doctor->lng))
+    marker = {};
+    @else
+    marker = L.marker([lat, lng]).addTo(map);
+    @endif
+    
+    map.on('click', function (e) {
+    lat = e.latlng.lat;
+    lng = e.latlng.lng; 
+    inputLat.setAttribute('value', lat);
+    inputLng.setAttribute('value', lng);
+    //Clear existing marker,    
+    if (marker != undefined) {
+    map.removeLayer(marker);
+    };    
+    //Add a marker to show where you clicked.
+    marker = L.marker([lat, lng]).addTo(map);
+    validation_map.style.display = 'none'
+    });
+//=========================================================================================
+
     //  validation
+    let validation_map = document.getElementById('validation-map');
     (function() {
           'use strict';
           window.addEventListener('load', function() {
             // Fetch all the forms we want to apply custom Bootstrap validation styles to
             var forms = document.getElementsByClassName('needs-validation');
+            
             // Loop over them and prevent submission
             var validation = Array.prototype.filter.call(forms, function(form) {
               form.addEventListener('submit', function(event) {
+                if(document.getElementById('lat').value == ''){
+                    validation_map.style.display = 'block';
+                    event.preventDefault();
+                    event.stopPropagation();
+                }else{
+
+                }
                 if (form.checkValidity() === false) {
                   event.preventDefault();
                   event.stopPropagation();
@@ -289,6 +340,7 @@
             });
           }, false);
         })();
-
+//=========================================================================================
 </script>
+
 @endsection

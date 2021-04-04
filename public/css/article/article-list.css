@@ -31,10 +31,17 @@ div.article:hover {
   font-size: 11px;
 }
 
-article-list .article-item p {
+.article-list {
+  margin-right: 0px !important;
+}
+.article-list .article-item .article-content p.content {
   color: #3d4e5e;
   font-size: 16px;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 10px;
 }
 
 div.article-img img {

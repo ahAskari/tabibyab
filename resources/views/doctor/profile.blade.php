@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('links')
 <link rel="stylesheet" href="{{ asset('css/doctor/doctorProfile.css') }}">
+<link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.css" />
 @endsection
 @section('content')
 <section class="profile row d-flex justify-content-between shadow py-5 my-2 mx-0" dir="rtl">
@@ -30,20 +31,20 @@
                 </p>
             </div>
             <p><span>تلفن: </span>{{$doctor->tell_no}}</p>
-            <div id="map" class="map shadow"></div>
+            <div id="map" style=""></div>
         </div>
     </div>
     <div class="col-lg-6 col-md-12 col-12" style="position: relative;">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div class="titleCard ">نوبت اینترنتی و مراجعه حضوری</div>
-           
+
         </div>
         <div class="appointment shadow-sm text-center">
-  <p style="direction: rtl;color: #012c57;font-size: 18px;font-weight: bold;line-height: 30px;"></p>
+            <p style="direction: rtl;color: #012c57;font-size: 18px;font-weight: bold;line-height: 30px;"></p>
             <div class="row col-12 mx-auto">
                 <div class="col-6 text-secondary">
-                    <svg height="" style="display: inline;width: 35px; height: 35px; fill: #00cb7a" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"
-                        id="fi_3203166">
+                    <svg height="" style="display: inline;width: 35px; height: 35px; fill: #00cb7a"
+                        viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg" id="fi_3203166">
                         <g id="_30-appointment" data-name="30-appointment">
                             <g id="linear_color" data-name="linear color" class="">
                                 <path
@@ -59,7 +60,9 @@
                                 <path d="m325.265 261.521h32a12 12 0 0 0 0-24h-32a12 12 0 1 0 0 24z"></path>
                                 <path d="m237.265 309.521h32a12 12 0 0 0 0-24h-32a12 12 0 0 0 0 24z"></path>
                                 <path d="m157.265 309.521h32a12 12 0 0 0 0-24h-32a12 12 0 0 0 0 24z"></path>
-                                <path d="m121.265 297.521a12 12 0 0 0 -12-12h-32a12 12 0 1 0 0 24h32a12 12 0 0 0 12-12z"></path>
+                                <path
+                                    d="m121.265 297.521a12 12 0 0 0 -12-12h-32a12 12 0 1 0 0 24h32a12 12 0 0 0 12-12z">
+                                </path>
                                 <path
                                     d="m424.515 357.036-25.884 25.884-24.265-12.132a12 12 0 0 0 -10.732 21.467l32 16a12 12 0 0 0 13.851-2.248l32-32a12 12 0 0 0 -16.97-16.971z">
                                 </path>
@@ -71,7 +74,8 @@
                     <small class="pr-4 mb-0">حداکثر انتظار : 15 دقیقه</small>
                 </div>
                 <div class="col-6" style="position: relative;">
-                    <button data-toggle="modal" data-target="#appointmentModal" style="position: absolute; bottom: 40%" class="btn btn-success">دریافت نوبت</button>
+                    <button data-toggle="modal" data-target="#appointmentModal" style="position: absolute; bottom: 40%"
+                        class="btn btn-success">دریافت نوبت</button>
                 </div>
             </div>
         </div>
@@ -149,44 +153,48 @@
 
 
 
-<!-- comment user -->
-<div class=" container " dir="rtl">
-    <form method="POST" action="{{route('add-comment')}}"
-        class="comment form pt-5 col-12 col-lg-6 col-md-12 needs-validation" novalidate>
-        @csrf
-        <div class="d-none">
+    <!-- comment user -->
+    <div class=" container " dir="rtl">
+        <form method="POST" action="{{route('add-comment')}}"
+            class="comment form pt-5 col-12 col-lg-6 col-md-12 needs-validation" novalidate>
+            @csrf
+            <div class="d-none">
+                @if (Auth::user())
+                <input name="user_id" id="user_id" class="d-none" value="{{Auth::user()->id}}">
+                @endif
+                <input name="doctor_id" id="doctor_id" value="{{$doctor->id}}">
+            </div>
+
             @if (Auth::user())
-            <input name="user_id" id="user_id" class="d-none" value="{{Auth::user()->id}}">
+            @if (Auth::user()->id == request()->id or empty($userCheck) )
+
+            @else
+            <textarea name="content" id="content" cols="15" rows="5" class="form-control text-right shadow"
+                placeholder="لطفا نظر خود را وارد کنید" required></textarea>
+            <div class="invalid-tooltip mr-3">
+                لطفا نظر خود را وارد کنید
+            </div>
+            <button type="submit" class="btn-info btn mr-0 d-block mt-2">ثبت</button>
             @endif
-            <input name="doctor_id" id="doctor_id" value="{{$doctor->id}}">
-        </div>
+            @else
+            <textarea name="content" id="content" cols="15" rows="5" class="form-control text-right shadow"
+                placeholder="لطفا نظر خود را وارد کنید" required></textarea>
+            <div class="invalid-tooltip mr-3">
+                لطفا نظر خود را وارد کنید
+            </div>
+            <button type="submit" class="btn-info btn mr-0 d-block mt-2">ثبت</button>
+            @endif
 
-        @if (Auth::user())
-        @if (Auth::user()->id == request()->id or empty($userCheck) )
+        </form>
 
-        @else
-        <textarea name="content" id="content" cols="15" rows="5" class="form-control text-right shadow"
-            placeholder="لطفا نظر خود را وارد کنید" required></textarea>
-        <div class="invalid-tooltip mr-3">
-            لطفا نظر خود را وارد کنید
-        </div>
-        <button type="submit" class="btn-info btn mr-0 d-block mt-2">ثبت</button>
-        @endif
-        @else
-        <textarea name="content" id="content" cols="15" rows="5" class="form-control text-right shadow"
-            placeholder="لطفا نظر خود را وارد کنید" required></textarea>
-        <div class="invalid-tooltip mr-3">
-            لطفا نظر خود را وارد کنید
-        </div>
-        <button type="submit" class="btn-info btn text-right ">ثبت</button>
-        @endif
-
-    </form>
-
-</div>
+    </div>
 </section>
+
 @endsection
 @section('script')
+<script  src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.js">
+</script>
+{{-- <script src="{{asset('js/showLocationDoctor.js')}}"></script> --}}
 <script>
     // validation
     (function() {
@@ -205,6 +213,29 @@
     }, false);
     });
     }, false);
-    })();
+})();
+// ========================================================================================================
+    // map 
+    let marker;
+    
+    @if(empty($doctor->lat && $doctor->lng))
+    let lat = 29.6314088582;
+    let lng = 52.519905567;
+    @else
+    let lat = {{$doctor->lat}};
+    let lng = {{$doctor->lng}};
+    @endif
+    
+    let map = L.map('map').setView([lat, lng], 14);
+    mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; ' + mapLink + 'Contributors', maxZoom: 18,
+    }).addTo(map);
+    @if(empty($doctor->lat && $doctor->lng))
+    marker = {};
+    @else
+    marker = L.marker([lat, lng]).addTo(map);
+    @endif
+// ========================================================================================================
 </script>
 @endsection

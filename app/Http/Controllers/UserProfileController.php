@@ -45,6 +45,8 @@ class UserProfileController extends Controller
             $user->speciality_id = $request->speciality_id;
             $user->tell_no = $request->tell_no;
             $user->address = $request->address;
+            $user->lat = $request->lat;
+            $user->lng = $request->lng;
             $user->update($request->all());
         }
 

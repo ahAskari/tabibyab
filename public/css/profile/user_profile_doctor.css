@@ -120,3 +120,8 @@ div.error {
   width: -moz-max-content;
   width: max-content;
 }
+
+div#map {
+  width: 370px;
+  height: 300px;
+}

@@ -48,7 +48,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" tabindex="-1" aria-disabled="true"
-                                    href="{{route('showArticle')}}">مجله سلامت</a>
+                                    href="{{route('showArticles')}}">مجله سلامت</a>
                             </li>
                         </ul>
 

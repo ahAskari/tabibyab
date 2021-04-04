@@ -48,6 +48,7 @@ class DoctorController extends Controller
         $speciality = User::find($id)->speciality;
         $time = User::find($id);
         $comments = Comment::where('doctor_id', $id)->get();
+        
         if (Auth::user()) {
             $userCheck = Appointment::where('doctor_id', $id)->where('user_id', Auth::user()->id)->first();
             return view('doctor.profile', ['doctor' => $doctor, 'speciality' => $speciality, 'time' => $time, 'comments' => $comments, 'userCheck' => $userCheck]);

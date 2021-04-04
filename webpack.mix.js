@@ -14,6 +14,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
 mix.js('resources/js/index.js', 'public/js')
 mix.js('resources/js/map.js', 'public/js')
+mix.js('resources/js/showLocationDoctor.js', 'public/js')
 mix.js('resources/js/check_user.js', 'public/js')
 mix.js('resources/js/userComment.js', 'public/js')
 mix.js('resources/js/datepicker/datepicker.all.js', 'public/js/datepicker')

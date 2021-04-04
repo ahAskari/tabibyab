@@ -2,6 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/js/index.js": "/js/index.js",
     "/js/map.js": "/js/map.js",
+    "/js/showLocationDoctor.js": "/js/showLocationDoctor.js",
     "/js/check_user.js": "/js/check_user.js",
     "/js/userComment.js": "/js/userComment.js",
     "/js/datepicker/datepicker.all.js": "/js/datepicker/datepicker.all.js",
@@ -12,6 +13,6 @@
     "/css/footer/footer.css": "/css/footer/footer.css",
     "/css/doctor/doctorList.css": "/css/doctor/doctorList.css",
     "/css/article/article-list.css": "/css/article/article-list.css",
-    "/css/profile/user_profile_doctor.css": "/css/profile/user_profile_doctor.css",
-    "/css/index.css": "/css/index.css"
+    "/css/index.css": "/css/index.css",
+    "/css/profile/user_profile_doctor.css": "/css/profile/user_profile_doctor.css"
 }

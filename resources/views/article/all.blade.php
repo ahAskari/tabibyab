@@ -14,9 +14,11 @@
         <div class="card-group">
             @foreach ($article_header as $article)
             <div class="card rounded">
-                <img class="card-img-top" src="{{asset('/images/article/1.jpg')}}" alt="Card image cap">
+                <a href="{{route('article', $article->id)}}"><img class="card-img-top"
+                        src="{{asset('/images/article/1.jpg')}}" alt="Card image cap"></a>
+
                 <div class="card-body ">
-                    <h5 class="card-title">{{$article->title}}</h5>
+                    <a href="{{route('article', $article->id)}}" class="card-title">{{$article->title}}</a>
                     <p class="card-text">{{$article->content}}</p>
                 </div>
                 <div class="card-footer">
@@ -32,12 +34,13 @@
         <div class="article-item d-flex col-9 p-4 rounded">
             <div class="article-content pt-4">
                 <!-- <p class=""></p> -->
-                <a href="#" class="title">{{$article->title}}</a>
+                <a href="{{route('article', $article->id)}}" class="title">{{$article->title}}</a>
                 <p class="content mt-4">{{$article->content}}</p>
-                <a href="#" class="read-more">بیشتر بخوانید</a>
+                <a href="{{route('article', $article->id)}}" class="read-more">بیشتر بخوانید</a>
             </div>
             <div class="article-img pl-4">
-                <img src="{{ asset('images/article/articleImg1.jpeg') }}" alt="articleImg">
+                <a href="{{route('article', $article->id)}}"><img src="{{ asset('images/article/articleImg1.jpeg') }}" alt="articleImg"></a>
+                
             </div>
         </div>
         @endforeach

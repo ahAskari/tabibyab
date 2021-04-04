@@ -37,7 +37,8 @@ use App\Services\Permission\Traits\HasPermissions;
 
 Route::get('/', [DoctorController::class, 'all'])->name('all');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/article', [ArticleController::class, 'showArticle'])->name('showArticle');
+Route::get('/article', [ArticleController::class, 'showArticles'])->name('showArticles');
+Route::get('article/content/{id}', [ArticleController::class, 'article'])->name('article');
 Route::get('/doctors', [DoctorController::class, 'doctorList'])->name('doctorList');
 Route::get('/allDoctors', [DoctorController::class, 'allDoctor'])->name('allDoctor');
 Route::get('/doctors/{id}/profile', [DoctorController::class, 'doctorProfile'])->name('doctorProfile');
@@ -72,6 +73,7 @@ Route::group(['prefix' => 'profile'], function () {
 Route::post('/doctor', [UserProfileController::class, 'select_date_time'])->name('doctor.newTime');  
 Route::post('/reserve', [AppointmentController::class, 'reserve'])->middleware('auth')->name('reserve');
 Route::post('/addCommetnt',[CommentController::class, 'insert'])->middleware('auth')->name('add-comment');
+
 // Route::prefix('panel')->middleware('role')->group(function () {
 //     Route::get('users', [UserController::class, 'index'])->name('users.index');
 //     Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
