@@ -1,22 +1,22 @@
 // mixin
-$font1: 'Roboto', sans-serif;
-$font2: Georgia, serif;
+// $font1: 'Roboto', sans-serif;
+// $font2: Georgia, serif;
 
 //Mixin related to font style and typography
-@mixin typography($font:font1,$size:14px,$weight:400,$height:25px,$color:red) {
-    // @if $font{
-    //     font-family: $font;
-    // }
-    // @else{
-    //     font-family: $font1;
-    // }
+// @mixin typography($font:font1,$size:14px,$weight:400,$height:25px,$color:red) {
+//     // @if $font{
+//     //     font-family: $font;
+//     // }
+//     // @else{
+//     //     font-family: $font1;
+//     // }
 
-    // font-family: $font;
-    font-size: $size;
-    font-weight: $weight;
-    line-height: $height;
-    color: $color;
-}
+//     // font-family: $font;
+//     font-size: $size;
+//     font-weight: $weight;
+//     line-height: $height;
+//     color: $color;
+// }
 
 // index ========================
 nav.navbar{
@@ -25,9 +25,6 @@ nav.navbar{
   a.login{
     text-decoration: none;
     color: black;
-  }
-  a{
-    font-weight: 900;
   }
 }
 //================================================================================
@@ -112,12 +109,12 @@ nav.navbar{
     // padding-top: 3rem;
     button {
       // background-color: #f1faee;
-      font-weight: 700;
+      // font-weight: 700;
     }
     label {
       display: block;
       color: #fff;
-      font-weight: 600;
+      // font-weight: 600;
     }
 
     .customSelectDoctor {

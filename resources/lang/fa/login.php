@@ -1,5 +1,6 @@
 <?php
 return[
+    'login' => 'ورود کاربران',
     'email-address' => 'آدرس ایمیل',
     'password' => 'پسورد',
     'rememberMe' => 'مرا به خاطر بسپار!',

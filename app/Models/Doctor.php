@@ -14,7 +14,7 @@ class Doctor extends Model
     use HasFactory, HasPermissions;
     protected $fillable = [
         'name',
-        'profile_img',
+        'avatar',
         'gender',
         'tell_nu',
         'address',

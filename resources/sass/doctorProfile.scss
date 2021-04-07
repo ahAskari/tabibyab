@@ -48,7 +48,7 @@ section.profile {
   }
   .information {
     &_title {
-      font-size: 25px;
+      font-size: 22px;
       font-weight: 400;
     }
   }
@@ -66,7 +66,7 @@ section.profile {
   }
   .getAppointment {
     font-size: 16px !important;
-    font-weight: 600;
+    // font-weight: 600;
     color: #ffffff;
     background-color: #328597 !important;  
     &:hover{
@@ -91,8 +91,7 @@ section.profile {
   #appointmentModal {
     .modal-title {
       text-align: center;
-      color: red;
-      font-weight: 600;
+      color: red; 
     }
   }
 }

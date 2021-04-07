@@ -20,6 +20,13 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('is_doctor');
             $table->string('password');
+            $table->decimal('lat', 10, 7)->nullable();
+            $table->decimal('lng', 10, 7)->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('tell_no')->nullable()->default(null);
+            $table->integer('speciality_id')->nullable()->default(null);
+            $table->string('address')->nullable()->default(null);
+            $table->string('date_time_id')->nullable()->default(null);
             $table->rememberToken();
             $table->timestamps();
         });

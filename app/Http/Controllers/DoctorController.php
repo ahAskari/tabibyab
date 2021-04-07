@@ -27,10 +27,11 @@ class DoctorController extends Controller
     // show doctor with check speciality
     public function doctorList(Request $request)
     {
+        // where('is_doctor', 'true')->
         $id = $request->get('specialyList');
         // go to speciality and check id if equal to speciality_id in doctor table retun this (doctor)
         $speciality = Speciality::find($id);
-        $user_doctor = User::where('is_doctor', 'true')->where('speciality_id', $id)->paginate(4);
+        $user_doctor = User::where('speciality_id', $id)->paginate(4);
         return view('doctor.list', ['speciality' => $speciality, 'user_doctor' => $user_doctor]);
     }
 

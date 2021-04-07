@@ -6,9 +6,6 @@ nav.navbar a.login {
   text-decoration: none;
   color: black;
 }
-nav.navbar a {
-  font-weight: 900;
-}
 
 /*the container must be positioned relative:*/
 .customSelectDoctor {
@@ -90,13 +87,9 @@ nav.navbar a {
   width: 340px;
   margin-left: 10rem !important;
 }
-.header .searchDoctor button {
-  font-weight: 700;
-}
 .header .searchDoctor label {
   display: block;
   color: #fff;
-  font-weight: 600;
 }
 .header .searchDoctor .customSelectDoctor {
   width: 250px;

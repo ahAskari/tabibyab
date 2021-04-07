@@ -43,7 +43,6 @@
 }
 .infoBox .flip-card-back .nameAvatar {
   font-size: 20px;
-  font-weight: 700;
   color: #fff;
   text-decoration: none;
 }
@@ -51,11 +50,9 @@
   font-weight: 700;
 }
 .infoBox .name {
-  font-weight: 500;
   font-size: 22px;
 }
 .infoBox a.takeTurn {
-  font-weight: 500;
   font-size: 20px;
   border-radius: 9px;
   border: none;
@@ -77,7 +74,7 @@
   text-align: center;
   color: black;
   font-size: 18px;
-  font-weight: 900;
+  font-weight: 500;
 }
 
 @media (max-width: 576px) {

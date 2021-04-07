@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+{{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> --}}
 <style>
+    
     span {
         text-align: right;
     }
@@ -77,9 +80,21 @@
                             </div>
                         </div>
                         <div class="custom-control custom-switch  text-right m-0">
-                            <input type="checkbox" name="is_doctor" id="is_doctor" value="true"
+                            {{-- <input type="checkbox" name="is_doctor" id="is_doctor" value="true"
                                 class="custom-control-input">
-                            <label class="custom-control-label" for="is_doctor">پزشک هستم</label>
+                            <label class="custom-control-label" for="is_doctor">پزشک هستم</label> --}}
+
+                            {{-- <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" required>
+                            <label class="btn btn-sm btn-outline-info" for="success-outlined">پزشک هستم</label>
+                            
+                            <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off" required>
+                            <label class="btn btn-sm btn-outline-info" for="danger-outlined">کاربر هستم</label> --}}
+
+                            @error('options-outlined')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group mb-0">
                             <div class="col-md-6 offset-md-4 text-left" style="padding-left: 2.8rem">

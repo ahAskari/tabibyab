@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-
+use Illuminate\Http\Request; 
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ArticleController;
@@ -62,17 +62,27 @@ Route::group(['prefix' => 'panel', 'middleware' => 'role:admin'], function () {
         'roles.edit'
     );
     Route::post('roles/{role_id}/edit', [RoleController::class, 'update'])->name('roles.update');
+    Route::post('users/delete/{id}', [UserController::class, 'destroy'])->name('users.delete');
+    Route::get('users/create', [UserController::class, 'create'])->name('create');
+    Route::post('users/create', [UserController::class, 'create_user'])->name('create_user');
 });
 
 Route::group(['prefix' => 'profile'], function () {
     Route::get('/user', [UserProfileController::class, 'userProfile'])->name('user.profile');
     // Route::post('/user', [UserProfileController::class, 'userProfile'])->name('user.profile');
     Route::get('/doctor', [UserProfileController::class, 'doctorProfile'])->name('doctor.profile');
-    Route::post('/doctor', [UserProfileController::class, 'EditDoctorProfile'])->name('doctor.update');
+    Route::put('/doctor', [UserProfileController::class, 'EditDoctorProfile'])->name('doctor.update');
+    // Route::put('/update/profile/{user}', [UserProfileController::class, 'update'])->name('');
 });
 Route::post('/doctor', [UserProfileController::class, 'select_date_time'])->name('doctor.newTime');  
 Route::post('/reserve', [AppointmentController::class, 'reserve'])->middleware('auth')->name('reserve');
 Route::post('/addCommetnt',[CommentController::class, 'insert'])->middleware('auth')->name('add-comment');
+
+// Route::post('/uploud', function(Request $request){
+//     $request->image->store('images','public');
+//     return 'uploaded';
+// })->name('uploud');
+
 
 // Route::prefix('panel')->middleware('role')->group(function () {
 //     Route::get('users', [UserController::class, 'index'])->name('users.index');

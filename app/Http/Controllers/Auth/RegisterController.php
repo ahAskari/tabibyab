@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Http\Controllers\Auth;
 
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Permission;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
@@ -56,7 +58,6 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-        
     }
 
     /**
@@ -65,12 +66,21 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+    // protected function create(UserRequest $userRequest)
+    // {
+    //     $user = new User($userRequest->all());
+    //     $user->password = bcrypt($userRequest['password']);
+    //     $user->save();
+
+    // }
     protected function create(array $data)
     {
+
         return User::create([
+
             'name' => $data['name'],
             'email' => $data['email'],
-            'is_doctor' => $data['is_doctor'],
+            // 'is_doctor' => $data['is_doctor'],
             'password' => Hash::make($data['password']),
         ]);
     }

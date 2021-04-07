@@ -47,7 +47,7 @@ section.profile .locationIcon {
   height: 22px;
 }
 section.profile .information_title {
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 400;
 }
 section.profile #map {
@@ -62,7 +62,6 @@ section.profile .form-group .dateTimePicker .dateTime {
 }
 section.profile .getAppointment {
   font-size: 16px !important;
-  font-weight: 600;
   color: #ffffff;
   background-color: #328597 !important;
 }
@@ -85,7 +84,6 @@ section.profile .date-time-hide, section.profile .fa_user_doctor_time {
 section.profile #appointmentModal .modal-title {
   text-align: center;
   color: red;
-  font-weight: 600;
 }
 
 .container form.comment label {

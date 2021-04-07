@@ -27,6 +27,7 @@ return [
 	'edit role' => 'ویرایش نقش',
 	'add permission to role' => 'افزودن دسترسی به نقش',
 	'panel' => 'مدیریت',
+	'user-admin' => 'مدیریت کاربران',
 	'name' => 'نام',
 	'persian name' => 'نام فارسی',
 	'permission name' => 'نام دسترسی',

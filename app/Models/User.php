@@ -30,7 +30,7 @@ class User extends Authenticatable
         'speciality_id',
         'tell_no',
         'address',
-        'profile_img',
+        'avatar',
     ];
 
     /**
@@ -51,6 +51,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getAvatarAttribute($value)
+    {
+        return asset($value);
+    }
+
 
     public function speciality()
     {

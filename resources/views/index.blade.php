@@ -5,7 +5,7 @@
     <!-- header  -->
     <section dir="ltr" class="header pt-5" style="background-image: url('images/index/background-header/doctor.jpg');">
         <div class="searchDoctor shadow-lg col-12 ">
-            <label for="specialyList" class="text-center text-info shadow-lg ml-0" style="font-weight: 700; font-size: 20px">جستجوی پزشکان</label>
+            <label for="specialyList" class="text-center text-info shadow-lg ml-0" style=" font-size: 20px">جستجوی تخصص</label>
             <div class="d-flex justify-content-between">
                 <form action="{{ route('doctorList') }}" method="get" class="d-flex align-items-center">
                     <input type="submit" class="btn btn-info" value="جستجو"> 

@@ -18,6 +18,7 @@ class CreateTimesTable extends Migration
             $table->string('date');
             $table->string('hour');
             $table->integer('doctor_id');
+            $table->string('reserved');
             $table->timestamps();
         });
     }

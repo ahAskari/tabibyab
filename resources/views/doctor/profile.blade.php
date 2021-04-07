@@ -12,14 +12,14 @@
         </div>
         @endif
         <div class="border-bottom  mb-2 text-center ">
-            @if (empty($doctor->profile_img))
+            @if (isset($doctor->avatar))
             <img src="{{asset('images/avatar/MaleDr.png')}}" id="imgAvatar" class="form-group shadow imgAvatar"
                 alt="تصویر پروفایل">
             @else
-            <img src="{{asset('images/')}}/{{$doctor->profile_img}}" id="imgAvatar" class="form-group shadow imgAvatar"
+            <img src="{{asset('images/1.png')}}/{{$doctor->avatar}}" id="imgAvatar" class="form-group shadow imgAvatar"
                 alt="تصویر پروفایل">
             @endif
-            <p class="name border-bottom  pt-2 d-inline" id="name">{{$doctor->name}}</p>
+            <p class="name border-bottom  pt-2 d-inline" id="name">دکتر {{$doctor->name}}</p>
             <p class="speciality mt-3 mb-0 " id="speciality">{{$speciality->title}} </p>
             {{-- <p class="text-secondary pr-4">فوق تخصص گوارش و کبد</p> --}}
         </div>
@@ -74,8 +74,7 @@
                     <small class="pr-4 mb-0">حداکثر انتظار : 15 دقیقه</small>
                 </div>
                 <div class="col-6" style="position: relative;">
-                    <button data-toggle="modal" data-target="#appointmentModal" style="position: absolute; bottom: 40%"
-                        class="btn btn-success">دریافت نوبت</button>
+                    <button data-toggle="modal" data-target="#appointmentModal" style="position: absolute; bottom: 40%" class="btn btn-success">دریافت نوبت</button>
                 </div>
             </div>
         </div>

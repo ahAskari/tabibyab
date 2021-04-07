@@ -7,6 +7,7 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><a href="{{route('users.index')}}">@lang('users.show users')</a></li>
                     <li class="list-group-item"><a href="{{route('roles.index')}}">@lang('users.show roles')</a></li>
+                    {{-- <li class="list-group-item"><a href="{{route('users.all')}}">@lang('users.user-admin')</a></li> --}}
                 </ul>
             </div>
         </div>

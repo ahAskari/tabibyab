@@ -8,28 +8,39 @@
 <link rel="stylesheet" href="{{ asset('css/profile/user_profile_doctor.css') }}">
 @endsection
 @section('content')
+
+<div>
+    <form action="/uploud" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="image">
+        <input type="submit" name="Upload"  >
+    </form>
+</div>
 <div class="container shadow-lg mt-5 p-0 text-right" dir="rtl">
     @if(session('success'))
     <div class="alert alert-success p-0 m-0">
         @lang('users.success')
     </div>
     @endif
-    <form action="{{route('doctor.update')}}" method="POST" enctype="multipart/form-data" class="needs-validation"
+    <form action="{{route('doctor.update',$doctor->id)}}" method="POST" enctype="multipart/form-data" class="needs-validation"
         autocomplete="off" novalidate>
         @csrf
+        @method('PUT')
         {{-- profile image --}}
         <div class="form-group text-center pt-3">
-            <label for="profile_img">
-                <input type="file" id="profile_img" name="profile_img" onchange="previewFile()"
-                    class="form-control profile_img">
-                @if (empty($profile_img))
+            <label for="avatar">
+                <input type="file" id="avatar" name="avatar" onchange="previewFile()"
+                    class="form-control d-block ">
+                {{-- @if (isset($doctor->avatar))
                 <img src="{{asset('images/avatar/MaleDr.png')}}" id="imgAvatar" class="form-group shadow imgAvatar"
                     alt="تصویر پروفایل">
-                @else
-                <img src="{{asset('images/')}}/{{$profile_img}}" id="imgAvatar" class="form-group shadow imgAvatar"
+                @else --}}
+                {{-- {{asset('images/')}}/{{$avatar}} --}}
+                <img src="{{$doctor->avatar}}" id="imgAvatar" class="form-group shadow imgAvatar"
                     alt="تصویر پروفایل">
-                @endif
-            </label>
+                    {{-- @endif --}}
+                </label>
+                <img class="rounded-circle" src="/public/images/1617800769.jpg" />
             <div class="invalid-feedback">
                 لطفا تصویر خود را وارد کنید
             </div>
@@ -41,7 +52,7 @@
                 <div class="col-12  mb-3" dir="rtl">
                     <label for="name">@lang('profile.name')</label>
                     <input type="text" class="name form-control" id="name" name="name" value="{{$doctor->name}}"
-                        placeholder="username" required>
+                        required>
                     <div class="invalid-tooltip">
                         لطفا نام را وارد کنید
                     </div>
@@ -88,7 +99,7 @@
                 {{-- address --}}
                 <div class="col-12  mb-3">
                     <label for="address">@lang('profile.address')</label>
-                    <textarea name="address" id="address" class="form-control" placeholder="" cols="30" rows="5"
+                    <textarea name="address" id="address" class="form-control" cols="30" rows="5"
                         required>{{$doctor->address}}</textarea>
                     <div class="invalid-tooltip">
                         لطفا آدرس خود را وارد کنید
@@ -254,7 +265,7 @@
     // profile image
     function previewFile() {
         var preview = document.getElementById('imgAvatar');
-        var file = document.getElementById('profile_img').files[0];
+        var file = document.getElementById('avatar').files[0];
         var reader = new FileReader();
         reader.addEventListener("load", function () {
         preview.src = reader.result;

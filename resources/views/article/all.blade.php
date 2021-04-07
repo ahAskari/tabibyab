@@ -31,7 +31,7 @@
     {{-- article-list --}}
     <section class="article-list">
         @foreach ($articles as $article)
-        <div class="article-item d-flex col-9 p-4 rounded">
+        <div class="article-item d-flex col-9 ml-auto p-4 rounded">
             <div class="article-content pt-4">
                 <!-- <p class=""></p> -->
                 <a href="{{route('article', $article->id)}}" class="title">{{$article->title}}</a>

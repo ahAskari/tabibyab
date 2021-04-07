@@ -18,6 +18,10 @@ class CreateAppointmentsTable extends Migration
             $table->bigInteger('doctor_id');
             $table->bigInteger('user_id');
             $table->bigInteger('time_id');
+            $table->string('fa_user');
+            $table->string('fa_doctor');
+            $table->string('fa_time');
+            $table->string('fa_hour');
             $table->timestamps();
         });
     }

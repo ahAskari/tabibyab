@@ -7,7 +7,7 @@ return [
     'ConfirmPassword' => 'تایید کلمه عبور',
     'register' => 'ثبت نام',
     'address' => 'آدرس',
-    'profile_img' => 'تصویر پروفیل',
+    'avatar' => 'تصویر پروفیل',
     'speciality' => 'تخصص',
     'tellnumber' => 'شماره تلفن',
     'city' => 'شهر',

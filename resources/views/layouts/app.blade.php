@@ -13,14 +13,26 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <!-- Fonts -->
-        <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
+
         @yield('links')
         @yield('title')
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         @yield('style')
         <link rel="stylesheet" href="{{ asset('css/footer/footer.css') }}">
+        <style>
+            @font-face {
+                font-family: vazir;
+                src: url('Vazir.ttf');
+                src: url('{{ asset('font/Vazir.tff') }}');
+            }
+
+            * {
+                font-family: vazir !important;
+            }
+        </style>
     </head>
 
     <body>
@@ -81,7 +93,8 @@
                                     </a>
                                     @endrole
                                     @role('doctor')
-                                    <a class="dropdown-item text-right" href="{{route('doctor.profile',Auth::user()->id)}}">
+                                    <a class="dropdown-item text-right"
+                                        href="{{route('doctor.profile',Auth::user()->id)}}">
                                         {{ __('پروفایل پزشک') }}
                                     </a>
                                     @endrole
@@ -114,7 +127,7 @@
             <footer class="footer text-right" style="position: absolute bottom: 0px">
                 <div class="footer-header d-flex align-items-center text-center container border-bottom text-light">
                     <div class="col-6 text-right pr-5">
-                        0917000000000 :پشتیبانی
+                        09370473638 :پشتیبانی
                     </div>
                     <div class="col-6 text-left pl-5">
                         <p>رسیدگی به مشکلات و پشتیبانی </p>

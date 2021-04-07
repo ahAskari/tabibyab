@@ -21,18 +21,19 @@
                     <img src="{{ asset('/icon/placeholder.png') }}" alt="location" class="locationIcon pt-1 ml-2" id="">
                 </div>
                 <div class="d-flex justify-content-start align-items-center">
-                    <a href="{{route('doctorProfile',$item->id)}}" class="takeTurn btn btn-success px-3" id="">دریافت
+                    <a href="{{route('doctorProfile',$item->id)}}" class="takeTurn btn btn-success btn-sm px-3"
+                        id="">دریافت
                         نوبت</a>
                 </div>
             </div>
             <div class="flip-card ">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        @if (empty($item->profile_img))
+                        @if (isset($item->avatar))
                         <img src="{{asset('images/avatar/MaleDr.png')}}" id="imgAvatar"
                             class="form-group shadow imgAvatar" alt="تصویر پروفایل">
                         @else
-                        <img src="{{asset('images/')}}/{{$item->profile_img}}" id="imgAvatar"
+                        <img src="{{asset('images/')}}/{{$item->avatar}}" id="imgAvatar"
                             class="form-group shadow imgAvatar" alt="تصویر پروفایل">
                         @endif
                     </div>
@@ -54,7 +55,7 @@
             <div class="infoBox_content text-right mr-5 align-items-center col-md-9 col-7">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="titleCard text-secondary col-8" style="">نوبت دهی مطب</div>
-                    <p class="name border-bottom  pt-2 d-inline" id="name">{{ $doctor->name }}</p>
+                    <p class="name border-bottom  pt-2 d-inline" id="name">دکتر {{ $doctor->name }}</p>
                 </div>
                 <p class="speciality text-secondary mt-3 pr-4 mb-0" id="speciality">
                     {{$doctor->speciality->title}}
@@ -66,19 +67,21 @@
                     <img src="{{ asset('/icon/placeholder.png') }}" alt="location" class="locationIcon pt-1 ml-2" id="">
                 </div>
                 <div class="d-flex justify-content-start align-items-center">
-                    <a href="{{route('doctorProfile',$doctor->id)}}" class="takeTurn btn btn-success px-3" id="">دریافت
+                    <a href="{{route('doctorProfile',$doctor->id)}}" class="takeTurn btn-sm btn btn-success px-3"
+                        id="">دریافت
                         نوبت</a>
                 </div>
             </div>
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        @if (empty($doctor->profile_img))
+                        @if (isset($doctor->avatar))
                         <img src="{{asset('images/avatar/MaleDr.png')}}" id="imgAvatar"
                             class="form-group shadow imgAvatar" alt="تصویر پروفایل">
                         @else
-                        <img src="{{asset('images/')}}/{{$doctor->profile_img}}" id="imgAvatar"
-                            class="form-group shadow imgAvatar" alt="تصویر پروفایل">
+                        {{-- {{asset('images/')}}/{{$doctor->avatar}} --}}
+                        <img src="{{$doctor->avatar}}" id="imgAvatar" class="form-group shadow imgAvatar"
+                            alt="تصویر پروفایل">
                         @endif
                     </div>
                     <div class="flip-card-back bg-info d-flex align-items-center justify-content-center">
@@ -102,7 +105,7 @@
         {{ $doctors->links() }}
     </div>
     @endif
-    
+
 
     <div>
     </div>
