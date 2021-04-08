@@ -74,10 +74,22 @@
                     <small class="pr-4 mb-0">حداکثر انتظار : 15 دقیقه</small>
                 </div>
                 <div class="col-6" style="position: relative;">
+                    @if (Auth::user())
+
                     @if (Auth::user()->id == request()->id)
+                    {{-- nothing --}}
                     @else
-                    <button data-toggle="modal" data-target="#appointmentModal" style="position: absolute; bottom: 40%" class="btn btn-success">دریافت نوبت</button>
+                    <button data-toggle="modal" data-target="#appointmentModal" style="position: absolute; bottom: 40%"
+                        class="btn btn-success">دریافت نوبت</button>
                     @endif
+
+                    @else
+                    <button data-toggle="modal" data-target="#appointmentModal" style="position: absolute; bottom: 40%"
+                        class="btn btn-success">دریافت نوبت</button>
+                    @endif
+
+
+
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@ class ArticleController extends Controller
     public function showArticles(Request $request)
     {
         $article_header = Article::paginate(3);
-        $articles = Article::paginate(5);
+        $articles = Article::all();
         return view('article.all', ['article_header' => $article_header, 'articles' => $articles]);
     }
     public function article(Request $request, $id)
