@@ -16,7 +16,7 @@ class AppointmentController extends Controller
 
     public function reserve(Request $request, Time $times)
     {
-        Time::where('id', $request->item_id)->where('user_id', $request->doctor_id)->update(['reserved' => 'true']);
+        // Time::where('id', $request->item_id)->where('user_id', $request->doctor_id)->update(['reserved' => 'true']);
         $reserve = new Appointment();
         $reserve->doctor_id = $request->doctor_id;
         $reserve->user_id = $request->user_id;

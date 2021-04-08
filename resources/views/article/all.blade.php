@@ -31,16 +31,15 @@
     {{-- article-list --}}
     <section class="article-list">
         @foreach ($articles as $article)
-        <div class="article-item d-flex col-9 ml-auto p-4 rounded">
-            <div class="article-content pt-4">
+        <div class="article-item row col-9 ml-auto p-4 rounded">
+            <div class="article-img col-3 pl-4">
+                <a href="{{route('article', $article->id)}}"><img src="{{ asset('images/article/articleImg1.jpeg') }}" alt="articleImg"></a>
+            </div>
+            <div class="article-content pt-4" style="width: 100%">
                 <!-- <p class=""></p> -->
                 <a href="{{route('article', $article->id)}}" class="title">{{$article->title}}</a>
                 <p class="content mt-4">{{$article->content}}</p>
                 <a href="{{route('article', $article->id)}}" class="read-more">بیشتر بخوانید</a>
-            </div>
-            <div class="article-img pl-4">
-                <a href="{{route('article', $article->id)}}"><img src="{{ asset('images/article/articleImg1.jpeg') }}" alt="articleImg"></a>
-                
             </div>
         </div>
         @endforeach

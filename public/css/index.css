@@ -7,6 +7,45 @@ nav.navbar a.login {
   color: black;
 }
 
+h3 {
+  color: #394959 !important;
+  margin: 2rem 0px 1rem 0px;
+}
+
+div.content-title {
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+}
+div.content-title-img {
+  position: relative;
+  width: 100%;
+}
+div.content-title-img img {
+  position: absolute;
+  border-radius: 4px;
+}
+div.content-title-img img#img-back {
+  width: 260px !important;
+  top: 0px;
+  left: 29% !important;
+}
+div.content-title-img img#img-middle {
+  top: 35%;
+  right: 174px;
+  width: 265px;
+}
+div.content-title-img img#img-front {
+  position: relative !important;
+  margin-top: 19%;
+  margin-right: 58%;
+  height: 300px;
+}
+
+div.article-title img {
+  position: relative;
+  width: 85%;
+}
+
 /*the container must be positioned relative:*/
 .customSelectDoctor {
   position: relative;
@@ -84,7 +123,7 @@ nav.navbar a.login {
   background-position: center;
 }
 .header .searchDoctor {
-  width: 340px;
+  width: 358px;
   margin-left: 10rem !important;
 }
 .header .searchDoctor label {

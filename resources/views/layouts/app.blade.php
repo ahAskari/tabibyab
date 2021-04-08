@@ -37,7 +37,7 @@
 
     <body>
         <div id="app" style="position: relative">
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" dir="rtl" style="background-color: rgba(201, 250, 235, 0.411) !important; 
+            <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm" dir="rtl" style="background-color: rgba(201, 250, 235, 0.411) !important; 
   padding: 1px 6rem !important;">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
@@ -98,11 +98,14 @@
                                         {{ __('پروفایل پزشک') }}
                                     </a>
                                     @endrole
-                                    @role('user')
+                                    {{-- @role('') --}}
+                                        
                                     <a class="dropdown-item text-right" href="{{route('user.profile')}}">
                                         {{ __('پروفایل') }}
                                     </a>
-                                    @endrole
+                                    {{-- @endrole --}}
+                                        
+                                    
                                     <a class="dropdown-item text-right" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('خروج') }}

@@ -74,7 +74,10 @@
                     <small class="pr-4 mb-0">حداکثر انتظار : 15 دقیقه</small>
                 </div>
                 <div class="col-6" style="position: relative;">
+                    @if (Auth::user()->id == request()->id)
+                    @else
                     <button data-toggle="modal" data-target="#appointmentModal" style="position: absolute; bottom: 40%" class="btn btn-success">دریافت نوبت</button>
+                    @endif
                 </div>
             </div>
         </div>
@@ -115,6 +118,7 @@
                             <input type="text" name="fa_hour" value="{{ $item->hour }}">
                             <input name="reserved" value="true">
                         </div>
+
                         <button class="getAppointment btn  m-2" name="time_id" id="" value="{{ $item->id }}"
                             type="submit">{{$item->date}} -
                             ساعت : {{$item->hour}}</button>
@@ -165,8 +169,7 @@
             </div>
 
             @if (Auth::user())
-            @if (Auth::user()->id == request()->id or empty($userCheck) )
-
+            @if ( empty($userCheck) )
             @else
             <textarea name="content" id="content" cols="15" rows="5" class="form-control text-right shadow"
                 placeholder="لطفا نظر خود را وارد کنید" required></textarea>
@@ -175,6 +178,7 @@
             </div>
             <button type="submit" class="btn-info btn mr-0 d-block mt-2">ثبت</button>
             @endif
+
             @else
             <textarea name="content" id="content" cols="15" rows="5" class="form-control text-right shadow"
                 placeholder="لطفا نظر خود را وارد کنید" required></textarea>
@@ -191,7 +195,7 @@
 
 @endsection
 @section('script')
-<script  src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.js">
+<script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.js">
 </script>
 {{-- <script src="{{asset('js/showLocationDoctor.js')}}"></script> --}}
 <script>

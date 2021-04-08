@@ -90,9 +90,9 @@ class UserProfileController extends Controller
 
             //     $input['image'] = "$profileImage";
             // }
-            $imageName = time() . '.' . $request->avatar->extension();
+            // $imageName = time() . '.' . $request->avatar->extension();
 
-            $request->avatar->move(public_path('images'), $imageName);
+            // $request->avatar->move(public_path('images'), $imageName);
             // if (request('avatar')) { 
             //     $user['avatar'] = request('avatar')->store('images');
             // }

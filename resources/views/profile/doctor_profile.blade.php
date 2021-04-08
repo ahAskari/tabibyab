@@ -8,39 +8,28 @@
 <link rel="stylesheet" href="{{ asset('css/profile/user_profile_doctor.css') }}">
 @endsection
 @section('content')
-
-<div>
-    <form action="/uploud" method="post" enctype="multipart/form-data">
-        @csrf
-        <input type="file" name="image">
-        <input type="submit" name="Upload"  >
-    </form>
-</div>
 <div class="container shadow-lg mt-5 p-0 text-right" dir="rtl">
     @if(session('success'))
     <div class="alert alert-success p-0 m-0">
         @lang('users.success')
     </div>
     @endif
-    <form action="{{route('doctor.update',$doctor->id)}}" method="POST" enctype="multipart/form-data" class="needs-validation"
-        autocomplete="off" novalidate>
+    <form action="{{route('doctor.update',$doctor->id)}}" method="POST" enctype="multipart/form-data"
+        class="needs-validation" autocomplete="off" novalidate>
         @csrf
         @method('PUT')
         {{-- profile image --}}
         <div class="form-group text-center pt-3">
             <label for="avatar">
-                <input type="file" id="avatar" name="avatar" onchange="previewFile()"
-                    class="form-control d-block ">
-                {{-- @if (isset($doctor->avatar))
+                <input type="file" id="avatar" name="avatar" onchange="previewFile()" class="form-control d-none">
+                @if (isset($doctor->avatar))
                 <img src="{{asset('images/avatar/MaleDr.png')}}" id="imgAvatar" class="form-group shadow imgAvatar"
                     alt="تصویر پروفایل">
-                @else --}}
+                @else 
                 {{-- {{asset('images/')}}/{{$avatar}} --}}
-                <img src="{{$doctor->avatar}}" id="imgAvatar" class="form-group shadow imgAvatar"
-                    alt="تصویر پروفایل">
-                    {{-- @endif --}}
-                </label>
-                <img class="rounded-circle" src="/public/images/1617800769.jpg" />
+                <img src="{{$doctor->avatar}}" id="imgAvatar" class="form-group shadow imgAvatar" alt="تصویر پروفایل">
+                @endif
+            </label>
             <div class="invalid-feedback">
                 لطفا تصویر خود را وارد کنید
             </div>
