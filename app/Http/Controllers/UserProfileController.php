@@ -15,10 +15,17 @@ class UserProfileController extends Controller
     public function userProfile(Request $request)
     {
         $user_id = auth()->user()->id;
+        $appointment = Appointment::where('user_id', $user_id)->get();
+        foreach ($appointment as $item) {
+            $timer = Time::where('user_id', $user_id)->where('id', $item->time_id)->get();
+            foreach ($timer as $timers) {
+                // print ($timers->date . ":" . $timers->hour . ":" . $item->fa_user . ":" . $item->fa_doctor) . '</br>';
+            }
+        }
         $user = User::where('id', $user_id)->first();
 
 
-        return view('profile.user_profile', ['user' => $user]);
+        return view('profile.user_profile', ['user' => $user, 'appointment' => $appointment, 'user_id' => $user_id]);
     }
     public function userEdit(Request $request)
     {
@@ -33,7 +40,12 @@ class UserProfileController extends Controller
         $time = User::find(Auth::user()->id);
         $speciality_list = Speciality::all();
         $appointment = Appointment::where('doctor_id', $doctor->id)->get();
-
+        // foreach ($appointment as $item) {
+        //     $timer = Time::where('user_id', $doctor->id)->where('id', $item->time_id)->get();
+        //     // foreach ($timer as $timers) {
+        //     //     // print ($timers->date . ":" . $timers->hour . ":" . $item->fa_user . ":" . $item->fa_doctor) . '</br>';
+        //     // }
+        // }
         return view('profile.doctor_profile', ['doctor' => $doctor, 'time' => $time, 'speciality' => $speciality, 'avatar' => $avatar, 'speciality_list' => $speciality_list, 'appointment' => $appointment]);
     }
     public function EditDoctorProfile(Request $request)
@@ -106,12 +118,12 @@ class UserProfileController extends Controller
     public function select_date_time(Request $request)
     {
         $rules = [
-            'date' => 'required',
+            'date' => 'required', 'unique:times',
             'hour' => 'required',
         ];
         $message = [
-            'date.required' => 'تاریخ و ساعت را انتخاب کنید',
-            'hour.required' => 'ساعت را انتخاب کنید',
+            'date.required' => 'لطفا تاریخ ساعت انتخاب کنید',
+            'hour.required' => 'please enter hours',
         ];
         $validator = Validator::make($request->all(), $rules, $message);
         if ($validator->fails()) {
@@ -121,10 +133,11 @@ class UserProfileController extends Controller
                 ->withInput();
         }
 
-        $doctor_date = new Time();
-        $doctor_date->date = $request->date;
-        $doctor_date->hour = $request->hour;
-        $doctor_date->user_id = Auth::user()->id;
+        $doctor_date = Time::firstOrCreate([
+            'date' => $request->date,
+            'hour' => $request->hour,
+            'user_id' => Auth::user()->id,
+        ]);
         $doctor_date->save();
         return back()->with('success', true);
     }

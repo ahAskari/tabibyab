@@ -49,6 +49,7 @@ class UserController extends Controller
     {
         return view('users.create');
     }
+    // admin
     public function create_user(Request $request)
     {
         User::create([

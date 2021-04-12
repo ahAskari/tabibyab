@@ -20,7 +20,7 @@ class CreateAppointmentsTable extends Migration
             $table->bigInteger('time_id');
             $table->string('fa_user');
             $table->string('fa_doctor');
-            $table->string('fa_time');
+            $table->string('fa_date');
             $table->string('fa_hour');
             $table->timestamps();
         });

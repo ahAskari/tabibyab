@@ -13,6 +13,7 @@
     "/css/footer/footer.css": "/css/footer/footer.css",
     "/css/doctor/doctorList.css": "/css/doctor/doctorList.css",
     "/css/article/article-list.css": "/css/article/article-list.css",
+    "/css/profile/user_profile.css": "/css/profile/user_profile.css",
     "/css/profile/user_profile_doctor.css": "/css/profile/user_profile_doctor.css",
     "/css/index.css": "/css/index.css"
 }

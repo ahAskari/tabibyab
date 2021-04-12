@@ -352,7 +352,7 @@
         var titleYearMonth = $('<div class="monthYear" />')
           .append(_monthText)
           .append("<span>&nbsp;&nbsp;</span>")
-          .append(_yearText);
+          // .append(_yearText);
         _head.append(titleYearMonth);
         _prev = $('<div class="prevArrow" />')
           // .html(this.options.prevArrow)

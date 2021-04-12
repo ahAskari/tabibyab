@@ -1,64 +1,78 @@
 @extends('layouts.app')
+@section('links')
+    <link rel="stylesheet" href="{{asset('css/profile/user_profile.css')}}">
+@endsection
 @section('content')
-<style>
-    div.invalid-tooltip{
-        right: 0 !important;
-        left: auto !important;
-    }
-</style>
 <div class="container mt-5" dir="rtl">
-    <form class="needs-validation p-3 col-12 col-sm-12 col-md-9 col-lg-6 shadow-lg"  style="margin: 0 auto important"
-        action="" method="POST" novalidate>
+    <form class="needs-validation mx-auto p-3 col-12 col-sm-12 col-md-9 col-lg-6 shadow-lg"
+        style="margin: 0 auto important" action="" method="POST" novalidate>
         @csrf
         <div class="form text-right">
-            <div class="col-12 mb-3">
+            {{-- <div class="col-12 mb-3">
                 <label for="username">@lang('profile.name')</label>
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="usernamePrepend">@</span>
-                    </div>
-                    <input type="text" class="form-control " id="name" value="{{$user->name}}" name="name" placeholder=""
-                        aria-describedby="usernamePrepend" required>
+                    <input type="text" class="form-control " id="name" value="{{$user->name}}" name="name"
+                        placeholder="" aria-describedby="usernamePrepend" required>
                     <div class="invalid-tooltip">
                         لطفا نام خود را وارد کنید
                     </div>
-                    {{-- {{$errors->first('name')}} --}}
                     @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
-            {{-- <div class="col-12 mb-3">
-                <label for="address">@lang('profile.address')</label>
-                <input type="text" class="form-control" id="address" value="{{$user->address}}" name="address" placeholder="" required>
-                <div class="invalid-tooltip">
-                    لطفا ادرس را وارد کنید
-                </div>
-                @error('address')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div> --}}
             <div class="col-12 mb-3">
                 <label for="email">@lang('profile.email')</label>
-                <input type="text" class="form-control" id="email" value="{{$user->email}}" name="email" placeholder="" required>
+                <input type="text" class="form-control" id="email" value="{{$user->email}}" name="email" placeholder=""
+                    required>
                 <div class="invalid-tooltip">
                     لطفا ایمیل خود را وارد کنید
                 </div>
-            </div>
-            {{-- <div class="col-12  mb-3">
-                <label for="phone">phone</label>
-                <input type="text" class="form-control shadow-sm" id="phone" name="phone" placeholder="phone" required>
-                <div class="invalid-tooltip">
-                    لطفا موبایل خود را انتخاب کنید
-                </div>
-                @error('phone')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
             </div> --}}
+
+            {{-- appointment-list --}}
+            <div class="appointment-list px-3">
+                <label for="table">لیست نوبت ها</label>
+                <table class="table table-sm  text-right rtl" id="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">نام پزشک</th>
+                            <th scope="col">تاریخ</th>
+                            <th scope="col">ساعت</th>
+                        </tr>
+                    </thead>
+                    <?php
+                        foreach ($appointment as $item) {
+                            $timer = App\Models\Time::where('id', $item->time_id)->get();
+                            foreach ($timer as $timers) {
+                                print ('<tr>');
+                                print ('<th scope="row">'. $item->fa_doctor .'</th>');
+                                print ('<td>' .$timers->date. '</td>');
+                                print ('<td>' .$timers->hour. '</td>');
+                                print ('/<tr>');                        
+                            }
+                        }
+                    ?>
+                    {{-- @forelse($appointment as $item)
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{$item->fa_doctor}}</th>
+                            <td>{{$item->fa_date}}</td>
+                            <td>{{$item->fa_hour}}</td>
+                        </tr>
+                        
+                    </tbody>
+                    @empty
+                    <div class="alert alert-danger">
+                        هیچ نوبتی ثبت نشده
+                    </div>
+                    @endforelse --}}
+                </table>
+            </div>
         </div>
-        <div class="col-12 mb-3 px-3 text-right">
+        {{-- <div class="col-12 mb-3 mt-5 px-3 text-right">
             <button class="btn btn-primary btn shadow" name="submit" id="submit" type="submit">ثبت تغیرات</button>
-        </div>
+        </div> --}}
     </form>
     {{-- @if ($errors->any())
 <div class="alert alert-danger">

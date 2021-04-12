@@ -122,18 +122,19 @@
                             <input name="fa_user" id="fa_user" value="{{Auth::user()->name}}">
                             @endif
                         </div>
-                        @forelse ($time->times as $item)
+                        {{-- @forelse ($doctor->times as $item) --}}
+                        @forelse ($time as $item)
 
                         <div class="date-time-hide">
-                            <input type="text" name="fa_time" value="{{ $item->id }}">
-                            <input type="text" name="fa_time" value="{{ $item->date }}">
-                            <input type="text" name="fa_hour" value="{{ $item->hour }}">
-                            <input name="reserved" value="true">
+                            <input type="" name='fa_date' value="{{ $item->date }}">
+                            <input type="" name='fa_hour' value="{{ $item->hour }}">
+                            {{-- <button  name="fa_date" value="{{ $item->date }}">{{ $item->date }}</button>
+                            <button  name='fa_hour' value="{{ $item->hour }}">{{ $item->hour }}</button> --}}
+                            <input type="" name='reserved' value="true">
                         </div>
 
-                        <button class="getAppointment btn  m-2" name="time_id" id="" value="{{ $item->id }}"
-                            type="submit">{{$item->date}} -
-                            ساعت : {{$item->hour}}</button>
+                        <button class="getAppointment btn  m-2" id="dsa[]" name="time_id" value="{{ $item->id }}"
+                            type="submit">{{$item->date}} - ساعت : {{$item->hour}}</button>
                         @empty
                         <div class="alert alert-success">هیج نوبتی ثبت نشده است</div>
                         @endforelse

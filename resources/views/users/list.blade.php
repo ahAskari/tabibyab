@@ -9,7 +9,7 @@
     <div class="card-header text-right">
         @lang('users.list')
     </div>
-    <div class="card-body text-right">
+    <div class="card-body text-right" style="overflow: auto; height: 390px;">
         <table class="table table-striped text-right">
             <thead>
                 <tr>
@@ -44,7 +44,9 @@
                 @endforelse
             </tbody>
         </table>
-        <a href="{{route('create_user')}}" class="btn btn-sm btn-primary">افزودن کاربر</a>
+    </div>
+    <div class="text-right mt-5 mr-3">
+        <a href="{{route('create_user')}}" class="btn  btn-primary">افزودن کاربر</a>
     </div>
 </div>
 @endsection

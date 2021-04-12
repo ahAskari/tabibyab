@@ -28,5 +28,6 @@ mix.sass('resources/sass/doctorProfile.scss', 'public/css/doctor')
 mix.sass('resources/sass/footer.scss', 'public/css/footer')
 mix.sass('resources/sass/index.scss', 'public/css')
 mix.sass('resources/sass/user_profile_doctor.scss', 'public/css/profile')
+mix.sass('resources/sass/user_profile.scss', 'public/css/profile')
 
 .sourceMaps();

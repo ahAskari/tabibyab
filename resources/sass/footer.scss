@@ -45,7 +45,7 @@ $font2: Georgia, serif;
   &__content {
     width: 20%;
     h3 {
-      @include typography($font1, 22px, 800, 20px, #fff);
+      @include typography($font1, 22px, 500, 20px, #fff);
       padding-bottom: 16px;
     }
 

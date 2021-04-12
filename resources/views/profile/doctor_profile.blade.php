@@ -25,7 +25,7 @@
                 @if (isset($doctor->avatar))
                 <img src="{{asset('images/avatar/MaleDr.png')}}" id="imgAvatar" class="form-group shadow imgAvatar"
                     alt="تصویر پروفایل">
-                @else 
+                @else
                 {{-- {{asset('images/')}}/{{$avatar}} --}}
                 <img src="{{$doctor->avatar}}" id="imgAvatar" class="form-group shadow imgAvatar" alt="تصویر پروفایل">
                 @endif
@@ -178,16 +178,20 @@
                     <th scope="col">ساعت</th>
                 </tr>
             </thead>
-            @foreach($appointment as $item)
             <tbody>
-                <tr>
-                    <th scope="row">{{$item->fa_user}}</th>
-                    <td>{{$item->fa_time}}</td>
-                    <td>{{$item->fa_hour}}</td>
-                </tr>
-
+                <?php
+                    foreach ($appointment as $item) {
+                        $timer = \App\Models\Time::where('user_id', $doctor->id)->where('id', $item->time_id)->get();
+                        foreach ($timer as $timers) {
+                            print ('<tr>');
+                            print ('<th scope="row">'. $item->fa_user .'</th>');
+                            print ('<td>' .$timers->date. '</td>');
+                            print ('<td>' .$timers->hour. '</td>');
+                            print ('/<tr>');                        
+                        }
+                    }
+                ?>
             </tbody>
-            @endforeach
         </table>
     </div>
 </div>
@@ -248,6 +252,7 @@
             startDate: "today",
             endDate:"1402/5/5",
             formatDate: "ND/DD/NM",
+            // formatDate: "YYYY/MM/DD",
             });
     });
 //=========================================================================================

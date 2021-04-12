@@ -30,7 +30,7 @@
         <span> @lang('users.add permission to user') </span>
         <hr>
     </div>
-    <div class="form-group">
+    {{-- <div class="form-group">
         @forelse ($permissions as $permission)
         <div class="custom-control custom-checkbox custom-control-inline ml-5 mr-0">
             <input type="checkbox" name='permissions[]' {{$user->permissions->contains($permission) ? 'checked' : ''}}
@@ -45,7 +45,7 @@
             @lang('users.there are not any role')
         </p>
         @endforelse
-    </div>
+    </div> --}}
     
         <table class="table">
             <thead>

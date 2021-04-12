@@ -5,18 +5,40 @@
         right: 0 !important;
         left: auto !important;
     }
+    input,
+    textarea#address,
+    select {
+    display: block !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(44, 66, 80, 0.24) !important;
+    background-color: #f8fafc !important;
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none;
+    }
+    
+    input:focus,
+    textarea#address,
+    select {
+    border: none !important;
+    outline: none !important;
+    border-bottom: 1px solid rgba(44, 66, 80, 0.24) !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    }   
 </style>
 <div class="container mt-5" dir="rtl">
-    <form class="needs-validation p-3 col-12 col-sm-12 col-md-9 col-lg-6 shadow-lg" style="margin: 0 auto important"
+    <form class="needs-validation mx-auto p-3 col-12 col-sm-12 col-md-9 col-lg-6 shadow-lg" style="margin: 0 auto important"
         action="" method="POST" novalidate>
         @csrf
         <div class="form text-right">
             <div class="col-12 mb-3">
                 <label for="username">نام کاربر</label>
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="usernamePrepend">@</span>
-                    </div>
                     <input type="text" class="form-control " id="name" value="" name="name" placeholder=""
                         aria-describedby="usernamePrepend" required>
                     <div class="invalid-tooltip">

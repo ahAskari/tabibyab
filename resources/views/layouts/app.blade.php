@@ -101,7 +101,7 @@
                                     {{-- @role('') --}}
                                         
                                     <a class="dropdown-item text-right" href="{{route('user.profile')}}">
-                                        {{ __('پروفایل') }}
+                                        {{ __('پروفایل کاربری') }}
                                     </a>
                                     {{-- @endrole --}}
                                         

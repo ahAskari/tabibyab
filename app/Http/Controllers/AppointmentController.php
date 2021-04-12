@@ -14,25 +14,49 @@ class AppointmentController extends Controller
         $this->middleware('auth');
     }
 
-    public function reserve(Request $request, Time $times)
+    public function reserve(Request $request)
     {
         // Time::where('id', $request->item_id)->where('user_id', $request->doctor_id)->update(['reserved' => 'true']);
+        // dd($request);
+        // $reserve = Appointment::firstOrCreate(
+        //     [
+        //         'doctor_id' => $request->doctor_id,
+        //         'user_id' => $request->user_id,
+        //         'time_id' => $request->time_id,
+        //         'fa_doctor' => $request->fa_doctor,
+        //         'fa_user' => $request->fa_user,
+        //         'fa_hour' => $request->fa_hour,
+        //         'fa_date' => $request->fa_date,
+        //         ]
+        //     );
+            // foreach ($reserve->all() as $key => $item){
+            //     if (strpos($key, 'fa_hour') !== false) {
+            //         $fa_hour = $item;
+            //     }
+            // }
+
+
+        //     dd($reserve);
+        // $reserve->save();
         $reserve = new Appointment();
         $reserve->doctor_id = $request->doctor_id;
         $reserve->user_id = $request->user_id;
-        $reserve->time_id = $request->user_id;
+        $reserve->time_id = $request->time_id;
         $reserve->fa_user = $request->fa_user;
         $reserve->fa_doctor = $request->fa_doctor;
-        $reserve->fa_time = $request->fa_time;
+        $reserve->fa_date = $request->fa_date;
         $reserve->fa_hour = $request->fa_hour;
         $reserve->save();
+        
+        $time_id = $request->time_id;
+        $time = Time::find($time_id);
+        $time->reserved = 'true';
 
+        $time->save();
 
-      
-        // $is_reserved = $request->item_id;
-        // $is_reserved->reserved = $request->reserved;
+        // $request->reserved = $request->reserved;
         // $times->update($request->all());
-        // $is_reserved->update($request->all());
+        // dd($request);
 
         return back()->with('success', true);
     }
