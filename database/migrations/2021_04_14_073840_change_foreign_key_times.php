@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTimesTable extends Migration
+class ChangeForeignKeyTimes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,8 @@ class CreateTimesTable extends Migration
      */
     public function up()
     {
-        Schema::create('times', function (Blueprint $table) {
-            $table->id();
-            $table->string('date');
-            $table->string('hour');
-            $table->unsignedBigInteger('user_id');
-            $table->string('reserved');
-            $table->timestamps();
-            
+        Schema::table('times', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id')->change();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
@@ -32,6 +26,8 @@ class CreateTimesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('times');
+        Schema::table('times', function (Blueprint $table) {
+            $table->dropForeign('doctor_id');
+        });
     }
 }

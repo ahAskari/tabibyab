@@ -23,12 +23,15 @@ class CreateUsersTable extends Migration
             $table->decimal('lat', 10, 7)->nullable();
             $table->decimal('lng', 10, 7)->nullable();
             $table->string('avatar')->nullable();
-            $table->string('tell_no')->nullable()->default(null);
-            $table->integer('speciality_id')->nullable()->default(null);
-            $table->string('address')->nullable()->default(null);
-            $table->string('date_time_id')->nullable()->default(null);
+            $table->string('tell_no')->nullable();
+            $table->unsignedBigInteger('speciality_id')->nullable();
+            $table->string('address')->nullable();
+            $table->string('date_time_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+
+            $table->foreign('speciality_id')->references('id')->on('specialities')->onDelete('cascade');
         });
     }
 
