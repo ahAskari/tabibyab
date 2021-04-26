@@ -2,7 +2,9 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/doctor/doctorList.css') }}">
 <section class="container pt-2">
+
     @if(Route::is('doctorList'))
+
     @foreach ($speciality->user as $item)
     <div class="infoBox bg-light mx-auto mb-1 shadow-lg border-bottom px-3 py-3 col-lg-9 rounded" id="">
         <div class="d-flex justify-content-center align-items-start">
@@ -59,7 +61,6 @@
                 </div>
                 <p class="speciality text-secondary mt-3 pr-4 mb-0" id="speciality">
                     {{$doctor->speciality->title}}
-
                 </p>
                 <div class="d-flex justify-content-end">
                     <p class="text-secondary address" id="address">{{$doctor->address}}

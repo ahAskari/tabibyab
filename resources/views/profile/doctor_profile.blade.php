@@ -41,7 +41,7 @@
                 <div class="col-12  mb-3" dir="rtl">
                     <label for="name">@lang('profile.name')</label>
                     <input type="text" class="name form-control" id="name" name="name" value="{{$doctor->name}}"
-                        required>
+                        >
                     <div class="invalid-tooltip">
                         لطفا نام را وارد کنید
                     </div>
@@ -74,16 +74,21 @@
                     <div class="invalid-tooltip">
                         لطفا تخصص خود را وارد کنید
                     </div>
-
+                    @error('speciality_id')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 {{-- tell no --}}
                 <div class="col-12  mb-3">
                     <label for="tell_no">@lang('profile.tellnumber')</label>
                     <input type="tel" name="tell_no" id="tell_no" class="tell_no form-control"
-                        value="{{$doctor->tell_no}}" minlength="10" maxlength="13" required>
+                        value="{{$doctor->tell_no}}" minlength="11" maxlength="11" required>
                     <div class="invalid-tooltip">
                         لطفا تلفن خود را وارد کنید
                     </div>
+                    @error('tell_no')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 {{-- address --}}
                 <div class="col-12  mb-3">
@@ -101,6 +106,9 @@
                     <div class="invalid-tooltip" id="validation-map">
                         لطفا آدرس مطب خود را روی نقشه انتخاب کنید
                     </div>
+                    @error('address')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 {{-- submit --}}
                 <div class="mb-3 mr-3 mt-5 text-right">
@@ -139,7 +147,7 @@
             </div> --}}
             {{-- @error('hour')
             <div class="error">{{ $message }}</div>
-        @enderror --}}
+            @enderror --}}
 </div>
 <div class="col-12  mb-3">
     <label for="pdpDefault" class="d-block">تاریخ</label>
@@ -155,8 +163,8 @@
 <button type="submit" class="btn btn-sm btn-success">افزودن</button>
 <div class="form-group d-flex text-right" style="margin-bottom: 19rem">
     <div class="form-group work-list mt-5">
-        @foreach ($time->times as $item)
-        <a href="" class="getAppointment shadow btn btn-sm m-2" data-toggle="modal"
+        @foreach ($time as $item)
+        <a class="getAppointment shadow btn btn-sm m-2" data-toggle="modal"
             data-target="#appointmentModal">{{$item->date}} - ساعت :
             {{$item->hour}}</a>
         @endforeach
@@ -182,9 +190,10 @@
                 <?php
                     foreach ($appointment as $item) {
                         $timer = \App\Models\Time::where('user_id', $doctor->id)->where('id', $item->time_id)->get();
+                        $user = \App\Models\User::where('id',$item->user_id)->first();
                         foreach ($timer as $timers) {
                             print ('<tr>');
-                            print ('<th scope="row">'. $item->fa_user .'</th>');
+                            print ('<th scope="row">'. $user->name .'</th>');
                             print ('<td>' .$timers->date. '</td>');
                             print ('<td>' .$timers->hour. '</td>');
                             print ('/<tr>');                        
@@ -213,37 +222,12 @@
 <script>
     //=========================================================================================
     $(document).on("keypress", "#pdpDefault", function (e) {
-    e.preventDefault();
-    return false;
+        e.preventDefault();
+        return false;
     });
-//=========================================================================================
-    // document.getElementById('pdpDefault').keypress(function(e){
-    // e.preventDefault();
-    // return false;
-    // });
-    // $(function(){
-        // $("#slecet-date-time").on('change', function(){
-        //     var formatDate = new FormData();
-        //     $.ajax({
-        //         url: '{{route('doctor.newTime')}}',
-        //         data: formData,
-        //         _token: '{{ csrf_token() }}',
-        //         success: function (response) {
-        //         console.log(response);
-        //         },
-        //         error: function () {
-        //         swal("error on server side");
-        //         }
-        //     });
-
-        // });
-    // });
 //=========================================================================================
     // date picker
     $(function(){
-        //usage
-        $(".usage").persianDatepicker();
-        //themes
         $("#pdpDefault").persianDatepicker({
             // alwaysShow: true,
             cellWidth: 43,
@@ -271,9 +255,9 @@
 //=========================================================================================   
     // tell no
     $("#tell_no").keypress(function (e) {
-    if (String.fromCharCode(e.which).match(/[^+0-9_]/)) {
-    e.preventDefault();
-    }
+        if (String.fromCharCode(e.which).match(/[^+0-9]/)) {
+            e.preventDefault();
+        }
     });
 
 //=========================================================================================

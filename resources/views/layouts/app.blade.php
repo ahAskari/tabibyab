@@ -79,6 +79,7 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('ثبت نام') }}</a>
                             </li>
                             @endif
+                            
                             @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -98,14 +99,11 @@
                                         {{ __('پروفایل پزشک') }}
                                     </a>
                                     @endrole
-                                    {{-- @role('') --}}
                                         
                                     <a class="dropdown-item text-right" href="{{route('user.profile')}}">
-                                        {{ __('پروفایل کاربری') }}
+                                        {{ __('لیست نوبت ها') }}
                                     </a>
-                                    {{-- @endrole --}}
-                                        
-                                    
+
                                     <a class="dropdown-item text-right" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('خروج') }}

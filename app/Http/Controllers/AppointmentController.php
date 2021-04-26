@@ -16,27 +16,6 @@ class AppointmentController extends Controller
 
     public function reserve(Request $request)
     {
-        // Time::where('id', $request->item_id)->where('user_id', $request->doctor_id)->update(['reserved' => 'true']);
-        // dd($request);
-        // $reserve = Appointment::firstOrCreate(
-        //     [
-        //         'doctor_id' => $request->doctor_id,
-        //         'user_id' => $request->user_id,
-        //         'time_id' => $request->time_id,
-        //         'fa_doctor' => $request->fa_doctor,
-        //         'fa_user' => $request->fa_user,
-        //         'fa_hour' => $request->fa_hour,
-        //         'fa_date' => $request->fa_date,
-        //         ]
-        //     );
-            // foreach ($reserve->all() as $key => $item){
-            //     if (strpos($key, 'fa_hour') !== false) {
-            //         $fa_hour = $item;
-            //     }
-            // }
-
-
-        //     dd($reserve);
         // $reserve->save();
         $reserve = new Appointment();
         $reserve->doctor_id = $request->doctor_id;
@@ -53,11 +32,7 @@ class AppointmentController extends Controller
         $time->reserved = 'true';
 
         $time->save();
-
-        // $request->reserved = $request->reserved;
-        // $times->update($request->all());
-        // dd($request);
-
+        
         return back()->with('success', true);
     }
 }

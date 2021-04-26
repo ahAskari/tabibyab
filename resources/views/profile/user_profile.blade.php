@@ -44,9 +44,10 @@
                     <?php
                         foreach ($appointment as $item) {
                             $timer = App\Models\Time::where('id', $item->time_id)->get();
+                            $doctor = App\Models\User::where('id', $item->doctor_id)->first();
                             foreach ($timer as $timers) {
                                 print ('<tr>');
-                                print ('<th scope="row">'. $item->fa_doctor .'</th>');
+                                print ('<th scope="row">'. $doctor->name .'</th>');
                                 print ('<td>' .$timers->date. '</td>');
                                 print ('<td>' .$timers->hour. '</td>');
                                 print ('/<tr>');                        

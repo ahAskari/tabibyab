@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Speciality extends Model
 {
     use HasFactory;
-
+    
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
+    
     public function doctor()
     {
         return $this->hasMany(Doctor::class);
     }
 
-    public function user()
-    {
-        return $this->hasMany(User::class);
-    }
 }

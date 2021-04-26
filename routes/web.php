@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Day;
+
 use App\Models\Role;
 use App\Models\Doctor;
 use App\Http\Controllers;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ArticleController;
@@ -44,23 +44,13 @@ Route::get('/allDoctors', [DoctorController::class, 'allDoctor'])->name('allDoct
 Route::get('/doctors/{id}/profile', [DoctorController::class, 'doctorProfile'])->name('doctorProfile');
 Route::get('/drlist', [DoctorController::class, 'dateTime'])->name('dateTime');
 
-
-// Route::get('/registerss', function () {
-//     return view('auth.doctor_register');
-// })->name('doctor_register');
-
-// Route::get('/registers', [RegisterController::class, 'assign']);
-
-
 Route::group(['prefix' => 'panel', 'middleware' => 'role:admin'], function () {
     Route::get('users', [UserController::class, 'index'])->name('users.index');
     Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::post('users/{user}/update', [UserController::class, 'update'])->name('users.update');
     Route::get('roles', [RoleController::class, 'index'])->name('roles.index');
     Route::post('roles', [RoleController::class, 'store'])->name('roles.store');
-    Route::get('roles/{role_id}/edit', [RoleController::class, 'edit'])->name(
-        'roles.edit'
-    );
+    Route::get('roles/{role_id}/edit', [RoleController::class, 'edit'])->name('roles.edit');
     Route::post('roles/{role_id}/edit', [RoleController::class, 'update'])->name('roles.update');
     Route::post('users/delete/{id}', [UserController::class, 'destroy'])->name('users.delete');
     Route::get('users/create', [UserController::class, 'create'])->name('create');
@@ -69,33 +59,13 @@ Route::group(['prefix' => 'panel', 'middleware' => 'role:admin'], function () {
 
 Route::group(['prefix' => 'profile'], function () {
     Route::get('/user', [UserProfileController::class, 'userProfile'])->name('user.profile');
-    // Route::post('/user', [UserProfileController::class, 'userProfile'])->name('user.profile');
     Route::get('/doctor', [UserProfileController::class, 'doctorProfile'])->name('doctor.profile');
     Route::put('/doctor', [UserProfileController::class, 'EditDoctorProfile'])->name('doctor.update');
-    // Route::put('/update/profile/{user}', [UserProfileController::class, 'update'])->name('');
 });
-Route::post('/doctor', [UserProfileController::class, 'select_date_time'])->name('doctor.newTime');  
+
+Route::post('/doctor', [UserProfileController::class, 'select_date_time'])->name('doctor.newTime');
 Route::post('/reserve', [AppointmentController::class, 'reserve'])->middleware('auth')->name('reserve');
-Route::post('/addCommetnt',[CommentController::class, 'insert'])->middleware('auth')->name('add-comment');
-
-// Route::post('/uploud', function(Request $request){
-//     $request->image->store('images','public');
-//     return 'uploaded';
-// })->name('uploud');
-
-
-// Route::prefix('panel')->middleware('role')->group(function () {
-//     Route::get('users', [UserController::class, 'index'])->name('users.index');
-//     Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-//     Route::post('users/{user}/update', [UserController::class, 'update'])->name('users.update');
-//     Route::get('roles', [RoleController::class, 'index'])->name('roles.index');
-//     Route::post('roles', [RoleController::class, 'store'])->name('roles.store');
-//     Route::get('roles/{role_id}/edit', [RoleController::class, 'edit'])->name(
-//         'roles.edit'
-//     );
-//     Route::post('roles/{role_id}/edit', [RoleController::class, 'update'])->name('roles.update');
-// });
-
+Route::post('/addCommetnt', [CommentController::class, 'insert'])->middleware('auth')->name('add-comment');
 
 
 
@@ -103,6 +73,10 @@ Auth::routes();
 
 
 
+// test givePermissionsTo
+// Route::get('/test', function(){
+//     auth()->user()->givePermissionsTo(['add user', 'delete user']);
+// });
 
 
 

@@ -74,6 +74,7 @@
                     <small class="pr-4 mb-0">حداکثر انتظار : 15 دقیقه</small>
                 </div>
                 <div class="col-6" style="position: relative;">
+                    
                     @if (Auth::user())
 
                     @if (Auth::user()->id == request()->id)
@@ -124,15 +125,11 @@
                         </div>
                         {{-- @forelse ($doctor->times as $item) --}}
                         @forelse ($time as $item)
-
                         <div class="date-time-hide">
-                            <input type="" name='fa_date' value="{{ $item->date }}">
-                            <input type="" name='fa_hour' value="{{ $item->hour }}">
-                            {{-- <button  name="fa_date" value="{{ $item->date }}">{{ $item->date }}</button>
-                            <button  name='fa_hour' value="{{ $item->hour }}">{{ $item->hour }}</button> --}}
-                            <input type="" name='reserved' value="true">
+                            <input name='fa_date' value="{{ $item->date }}">
+                            <input name='fa_hour' value="{{ $item->hour }}">
+                            <input name='reserved' value="true">
                         </div>
-
                         <button class="getAppointment btn  m-2" id="dsa[]" name="time_id" value="{{ $item->id }}"
                             type="submit">{{$item->date}} - ساعت : {{$item->hour}}</button>
                         @empty
@@ -147,7 +144,6 @@
         </div>
 
         {{-- comment --}}
-        {{-- @forelse ($comments as $comment) --}}
         <div class="all-comment col-12 col-lg-12 col-md-12" style="position: absolute; bottom: 0px">
             <label for="form-group" class="shadow-sm">نظرات کاربران</label>
             <div class="comment-body ml-auto">
@@ -161,10 +157,6 @@
                 @endforelse
             </div>
         </div>
-
-        {{-- @empty
-            
-        @endforelse --}}
     </div>
 
 
@@ -231,9 +223,8 @@
     }, false);
 })();
 // ========================================================================================================
-    // map 
-    let marker;
-    
+// map 
+    let marker;    
     @if(empty($doctor->lat && $doctor->lng))
     let lat = 29.6314088582;
     let lng = 52.519905567;
@@ -247,6 +238,7 @@
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; ' + mapLink + 'Contributors', maxZoom: 18,
     }).addTo(map);
+    
     @if(empty($doctor->lat && $doctor->lng))
     marker = {};
     @else

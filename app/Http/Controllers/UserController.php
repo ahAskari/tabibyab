@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Permission;
+use App\Models\Speciality;
 
 use function Ramsey\Uuid\v1;
 use Illuminate\Http\Request;
